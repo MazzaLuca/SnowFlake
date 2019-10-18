@@ -25,7 +25,8 @@ package Frames;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
+import java.awt.Graphics2D;
+//import java.awt.Point;
 import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +42,11 @@ public class MainWindow extends javax.swing.JFrame{
     int height;
     int hypo;
     int cath;
-    List<Point> points = new ArrayList<>();
+//    List<Point> points = new ArrayList<>();
 //    ArrayList<Point> points = new ArrayList<Point>();
 
 //    private Polygon triangle = new Polygon();
     
-    @Override
     public void paint(Graphics g){
         super.paint(g);
         g.setColor(Color.LIGHT_GRAY);
@@ -61,7 +61,7 @@ public class MainWindow extends javax.swing.JFrame{
         yS[0] = (this.getHeight() / 100) * 25;
         yS[1] = yS[0] + this.height;
         yS[2] = yS[0];
-        triangle = new Polygon(xEs, yS, 3);
+        this.triangle = new Polygon(xEs, yS, 3);
         g.fillPolygon(this.triangle);
         g.setColor(Color.RED);
         g.drawPolygon(this.poly);
@@ -112,6 +112,7 @@ public class MainWindow extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        
         this.poly.addPoint(evt.getX(), evt.getY());
 //        this.points.add(evt.getPoint());
 //        int[] x = new int[points.size()];

@@ -23,9 +23,6 @@
  */
 package Frames;
 
-import java.io.File;
-import java.io.IOException;
-
 /**
  *
  * @author lucamazza
