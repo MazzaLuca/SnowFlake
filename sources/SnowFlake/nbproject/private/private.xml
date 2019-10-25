@@ -4,8 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Volumes/MazzaT5/2019-2020/Professionale/Progetti/SnowFlake/src/Frames/MainWindow.java</file>
-            <file>file:/Volumes/MazzaT5/2019-2020/Professionale/Progetti/SnowFlake/src/Frames/Triangle.java</file>
-            <file>file:/Volumes/MazzaT5/2019-2020/Professionale/Progetti/SnowFlake/src/Frames/MainFrame.java</file>
+            <file>file:/Volumes/MazzaT5/2019-2020/Professionale/Progetti/SnowFlake/src/snowflake/MainFrame.java</file>
+            <file>file:/Volumes/MazzaT5/2019-2020/Professionale/Progetti/SnowFlake/src/snowflake/TrianglePanel.java</file>
         </group>
     </open-files>
 </project-private>
