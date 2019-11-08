@@ -59,6 +59,14 @@ public class TrianglePanel extends javax.swing.JPanel {
         this.t1 = new Triangle(this.getHeight(), this.getWidth());
         Area triangle = new Area(this.t1.triangle);
         Area cuts = new Area(this.poly);
+        
+        g2d.setColor(new Color(120, 30, 30, 255));
+        g2d.draw(cuts);
+        g2d.setColor(new Color(10, 10, 10, 255));
+        if(this.poly.npoints > 2){
+            triangle.subtract(cuts);
+        }
+        g2d.fill(triangle);
         for (Point point : this.points) {
             g2d.setColor(
                     this.clicked?
@@ -69,14 +77,6 @@ public class TrianglePanel extends javax.swing.JPanel {
             g2d.setColor(new Color(0, 0, 0, 255));
             g2d.drawOval(point.x - RAD, point.y - RAD, RAD*2, RAD*2);
         }
-        g2d.setColor(new Color(120, 30, 30, 255));
-        g2d.draw(cuts);
-        g2d.setColor(new Color(10, 10, 10, 255));
-        if(this.poly.npoints > 2){
-            triangle.subtract(cuts);
-        }
-        g2d.fill(triangle);
-
     }
     /**
      * This method is called from within the constructor to initialize the form.
