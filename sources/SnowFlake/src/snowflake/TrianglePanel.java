@@ -23,12 +23,12 @@
  */
 package snowflake;
 
-import static Frames.MainWindow.RAD;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Polygon;
-import java.awt.Rectangle;
+import java.awt.geom.Area;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,50 +38,45 @@ import java.util.List;
  */
 public class TrianglePanel extends javax.swing.JPanel {
     Polygon poly = new Polygon();
-    Polygon triangle = new Polygon();
-    Rectangle rect = new Rectangle();
-    int height;
     int hypo;
     int cath;
     List<Point> points = new ArrayList<>();
     boolean clicked;
+    private Triangle t1;
     public static final int RAD = 5;
     public static final Color CLICKED_COLOR = new Color(0, 200, 25, 255);
+
     /**
      * Creates new form TrianglePanel
      */
     public TrianglePanel() {
         initComponents();
     }
+    
     @Override
     public void paintComponent(Graphics g){
-        this.setBackground(Color.WHITE);
-        g.setColor(new Color(10, 10, 10, 255));
-        this.height = (int)(this.getHeight() / 100) * 50;
-        this.hypo = (int)(height * 1.1547);
-        this.cath = hypo / 2;
-        int[] xEs = new int[3];
-        int[] yS = new int[3];
-        xEs[0] = (this.getWidth() / 100) * 40;
-        xEs[1] = xEs[0];
-        xEs[2] = xEs[0] + this.cath;
-        yS[0] = (this.getHeight() / 100) * 25;
-        yS[1] = yS[0] + this.height;
-        yS[2] = yS[0];
-        this.triangle = new Polygon(xEs, yS, 3);
-        g.fillPolygon(this.triangle);
-        g.setColor(new Color(100, 100, 100, 255));
-        g.drawPolygon(this.poly);
+        Graphics2D g2d = (Graphics2D) g;
+        this.t1 = new Triangle(this.getHeight(), this.getWidth());
+        Area triangle = new Area(this.t1.triangle);
+        Area cuts = new Area(this.poly);
         for (Point point : this.points) {
-            g.setColor(
+            g2d.setColor(
                     this.clicked?
                             CLICKED_COLOR:
                             new Color(100, 100, 100, 255)
             );
-            g.fillOval(point.x - RAD, point.y - RAD, RAD*2, RAD*2);
-            g.setColor(new Color(0, 0, 0, 255));
-            g.drawOval(point.x - RAD, point.y - RAD, RAD*2, RAD*2);
+            g2d.fillOval(point.x - RAD, point.y - RAD, RAD*2, RAD*2);
+            g2d.setColor(new Color(0, 0, 0, 255));
+            g2d.drawOval(point.x - RAD, point.y - RAD, RAD*2, RAD*2);
         }
+        g2d.setColor(new Color(120, 30, 30, 255));
+        g2d.draw(cuts);
+        g2d.setColor(new Color(10, 10, 10, 255));
+        if(this.poly.npoints > 2){
+            triangle.subtract(cuts);
+        }
+        g2d.fill(triangle);
+
     }
     /**
      * This method is called from within the constructor to initialize the form.

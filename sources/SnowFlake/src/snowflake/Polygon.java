@@ -21,20 +21,14 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package Frames;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Polygon;
+package snowflake;
 
 /**
  *
  * @author Luca Mazza
- * @version 11 Oct 2019
+ * @version 8 Nov 2019
  */
-public class Triangle {
-    Polygon triangle = new Polygon();
-    public void paint(Graphics g) {
-        g.setColor(Color.LIGHT_GRAY);
-    }
+public class Polygon {
+
 }

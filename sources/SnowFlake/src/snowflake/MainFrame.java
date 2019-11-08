@@ -45,20 +45,17 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu3 = new javax.swing.JMenu();
         trianglePanel1 = new snowflake.TrianglePanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-
-        jMenu3.setText("jMenu3");
+        menuBar = new javax.swing.JMenuBar();
+        SaveAs = new javax.swing.JMenu();
+        SaveAsPng = new javax.swing.JMenuItem();
+        SaveAsSvg = new javax.swing.JMenuItem();
+        Edit = new javax.swing.JMenu();
+        Reset = new javax.swing.JMenuItem();
+        Undo = new javax.swing.JMenuItem();
+        Redo = new javax.swing.JMenuItem();
+        View = new javax.swing.JMenu();
+        Preview = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
@@ -77,68 +74,68 @@ public class MainFrame extends javax.swing.JFrame {
             .addGap(0, 720, Short.MAX_VALUE)
         );
 
-        jMenu1.setText("Save as");
+        SaveAs.setText("Save as");
 
-        jMenuItem1.setText("PNG");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        SaveAsPng.setText("PNG");
+        SaveAsPng.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                SaveAsPngActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        SaveAs.add(SaveAsPng);
 
-        jMenuItem2.setText("SVG");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        SaveAsSvg.setText("SVG");
+        SaveAsSvg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                SaveAsSvgActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        SaveAs.add(SaveAsSvg);
 
-        jMenuBar1.add(jMenu1);
+        menuBar.add(SaveAs);
 
-        jMenu2.setText("Edit");
+        Edit.setText("Edit");
 
-        jMenuItem3.setText("Reset");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        Reset.setText("Reset");
+        Reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                ResetActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        Edit.add(Reset);
 
-        jMenuItem4.setText("Undo");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        Undo.setText("Undo");
+        Undo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                UndoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        Edit.add(Undo);
 
-        jMenuItem5.setText("Redo");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        Redo.setText("Redo");
+        Redo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                RedoActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem5);
+        Edit.add(Redo);
 
-        jMenuBar1.add(jMenu2);
+        menuBar.add(Edit);
 
-        jMenu4.setText("View");
+        View.setText("View");
 
-        jMenuItem6.setText("Preview");
-        jMenuItem6.setMinimumSize(new java.awt.Dimension(1280, 720));
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        Preview.setText("Preview");
+        Preview.setMinimumSize(new java.awt.Dimension(1280, 720));
+        Preview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                PreviewActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem6);
+        View.add(Preview);
 
-        jMenuBar1.add(jMenu4);
+        menuBar.add(View);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -154,31 +151,31 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void SaveAsPngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsPngActionPerformed
         // Save as PNG
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_SaveAsPngActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
         trianglePanel1.poly.reset();
         trianglePanel1.points.clear();
         trianglePanel1.repaint();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_ResetActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void SaveAsSvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsSvgActionPerformed
         // Save as SVG
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_SaveAsSvgActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoActionPerformed
         // Undo
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_UndoActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void RedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedoActionPerformed
         // Redo
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_RedoActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void PreviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviewActionPerformed
         // Preview
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_PreviewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,17 +213,16 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenu Edit;
+    private javax.swing.JMenuItem Preview;
+    private javax.swing.JMenuItem Redo;
+    private javax.swing.JMenuItem Reset;
+    private javax.swing.JMenu SaveAs;
+    private javax.swing.JMenuItem SaveAsPng;
+    private javax.swing.JMenuItem SaveAsSvg;
+    private javax.swing.JMenuItem Undo;
+    private javax.swing.JMenu View;
+    private javax.swing.JMenuBar menuBar;
     private snowflake.TrianglePanel trianglePanel1;
     // End of variables declaration//GEN-END:variables
 }
