@@ -23,6 +23,9 @@
  */
 package snowflake;
 
+import java.awt.Color;
+import javax.swing.JColorChooser;
+
 /**
  *
  * @author lucamazza
@@ -45,7 +48,16 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        trianglePanel1 = new snowflake.TrianglePanel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel2 = new javax.swing.JPanel();
+        showLine = new javax.swing.JToggleButton();
+        pickTriangleColor = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        generateSnowFlake = new javax.swing.JButton();
+        snowFlakePanel = new snowflake.SnowFlakePanel();
         menuBar = new javax.swing.JMenuBar();
         SaveAs = new javax.swing.JMenu();
         SaveAsPng = new javax.swing.JMenuItem();
@@ -56,23 +68,61 @@ public class MainFrame extends javax.swing.JFrame {
         Redo = new javax.swing.JMenuItem();
         View = new javax.swing.JMenu();
         Preview = new javax.swing.JMenuItem();
+        showLines = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
-        setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        trianglePanel1.setMinimumSize(new java.awt.Dimension(1280, 720));
+        showLine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/snowflake/img/PolygonIcon.png"))); // NOI18N
+        showLine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showLineActionPerformed(evt);
+            }
+        });
+        jPanel2.add(showLine);
 
-        javax.swing.GroupLayout trianglePanel1Layout = new javax.swing.GroupLayout(trianglePanel1);
-        trianglePanel1.setLayout(trianglePanel1Layout);
-        trianglePanel1Layout.setHorizontalGroup(
-            trianglePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pickTriangleColor.setText("Color");
+        pickTriangleColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickTriangleColorActionPerformed(evt);
+            }
+        });
+        jPanel2.add(pickTriangleColor);
+        jPanel2.add(jSeparator2);
+
+        jButton2.setText("jButton2");
+        jPanel2.add(jButton2);
+
+        jButton3.setText("jButton3");
+        jButton3.setMaximumSize(new java.awt.Dimension(70, 70));
+        jPanel2.add(jButton3);
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+
+        generateSnowFlake.setText("Generate");
+        generateSnowFlake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateSnowFlakeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(generateSnowFlake);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
+
+        javax.swing.GroupLayout snowFlakePanelLayout = new javax.swing.GroupLayout(snowFlakePanel);
+        snowFlakePanel.setLayout(snowFlakePanelLayout);
+        snowFlakePanelLayout.setHorizontalGroup(
+            snowFlakePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 1280, Short.MAX_VALUE)
         );
-        trianglePanel1Layout.setVerticalGroup(
-            trianglePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 720, Short.MAX_VALUE)
+        snowFlakePanelLayout.setVerticalGroup(
+            snowFlakePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 706, Short.MAX_VALUE)
         );
+
+        getContentPane().add(snowFlakePanel, java.awt.BorderLayout.CENTER);
 
         SaveAs.setText("Save as");
 
@@ -133,20 +183,18 @@ public class MainFrame extends javax.swing.JFrame {
         });
         View.add(Preview);
 
+        showLines.setSelected(true);
+        showLines.setText("Show lines");
+        showLines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showLinesActionPerformed(evt);
+            }
+        });
+        View.add(showLines);
+
         menuBar.add(View);
 
         setJMenuBar(menuBar);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(trianglePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(trianglePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,9 +204,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveAsPngActionPerformed
 
     private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
-        trianglePanel1.poly.reset();
-        trianglePanel1.points.clear();
-        trianglePanel1.repaint();
+        snowFlakePanel.poly.reset();
+        snowFlakePanel.points.clear();
+        snowFlakePanel.repaint();
     }//GEN-LAST:event_ResetActionPerformed
 
     private void SaveAsSvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsSvgActionPerformed
@@ -174,8 +222,29 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_RedoActionPerformed
 
     private void PreviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviewActionPerformed
-        // Preview
+        // preview
     }//GEN-LAST:event_PreviewActionPerformed
+
+    private void showLinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLinesActionPerformed
+
+    }//GEN-LAST:event_showLinesActionPerformed
+
+    private void generateSnowFlakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateSnowFlakeActionPerformed
+        snowFlakePanel.generated = !snowFlakePanel.generated;
+        snowFlakePanel.repaint();
+    }//GEN-LAST:event_generateSnowFlakeActionPerformed
+
+    private void pickTriangleColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickTriangleColorActionPerformed
+        JColorChooser jcc = new JColorChooser();
+        Color c = jcc.showDialog(null, "Select a color", Color.BLACK);
+        snowFlakePanel.triangleColor = c;
+        snowFlakePanel.repaint();
+    }//GEN-LAST:event_pickTriangleColorActionPerformed
+
+    private void showLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLineActionPerformed
+        snowFlakePanel.showLines = !snowFlakePanel.showLines;
+        snowFlakePanel.repaint();
+    }//GEN-LAST:event_showLineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,7 +291,17 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem SaveAsSvg;
     private javax.swing.JMenuItem Undo;
     private javax.swing.JMenu View;
+    private javax.swing.JButton generateSnowFlake;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JMenuBar menuBar;
-    private snowflake.TrianglePanel trianglePanel1;
+    private javax.swing.JButton pickTriangleColor;
+    private javax.swing.JToggleButton showLine;
+    private javax.swing.JCheckBoxMenuItem showLines;
+    private snowflake.SnowFlakePanel snowFlakePanel;
     // End of variables declaration//GEN-END:variables
 }

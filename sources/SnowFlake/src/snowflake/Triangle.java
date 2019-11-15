@@ -23,7 +23,9 @@
 */
 package snowflake;
 
+import java.awt.Point;
 import java.awt.Polygon;
+import java.util.List;
 
 /**
  *
@@ -33,29 +35,41 @@ import java.awt.Polygon;
 public class Triangle {
     Polygon triangle = new Polygon();
     int height;
-    int hypo;
     int cath;
     int panelHeight;
     int panelWidth;
+    boolean generated;
     int[] xEs = new int[3];
     int[] yS = new int[3];
+    Polygon poly;
+    List<Point> points;
+    
+    public static final int WIDTH = 500;
+    public static final double HEIGHT = 500 * Math.sqrt(3);
 
-    public Triangle(int panelHeight, int panelWidth) {
+    public Triangle(int panelHeight, int panelWidth, boolean generated) {
         this.panelHeight = panelHeight;
         this.panelWidth = panelWidth;
+        this.generated = generated;
         this.calculateSizes();
+    }
+    
+    public void addPolyPoint(Point p){
+        Point p2 = new Point((p.x * WIDTH/this.cath), (int)(p.y * HEIGHT/this.cath));
+        this.poly.addPoint(p2.x, p2.y);
+        this.points.add(p2);
     }
 
     public void calculateSizes(){
-        this.height = this.panelHeight / 2;
-        this.hypo = (int)(height * 1.1547);
-        this.cath = hypo / 2;
-        this.xEs[0] = (int)(this.panelWidth / 2.5);
+        this.cath = (int)(WIDTH * (this.panelHeight/2)/HEIGHT) /(this.generated?2:1);
+        this.height = (int)(this.cath * Math.sqrt(3));
+        this.xEs[0] = (int)(this.panelWidth / (2.5 / (this.generated?1.3:1)));
         this.xEs[1] = this.xEs[0];
         this.xEs[2] = this.xEs[0] + this.cath;
         this.yS[0] = this.panelHeight / 4;
         this.yS[1] = this.yS[0] + this.height;
         this.yS[2] = this.yS[0];
         this.triangle = new Polygon(this.xEs, this.yS, 3);
+        
     }
 }
