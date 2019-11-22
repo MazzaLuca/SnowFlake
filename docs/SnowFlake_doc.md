@@ -53,7 +53,7 @@
 Progetto individuale del primo semestre del terzo anno della ***SAMT*** (Scuola d'Arti e Mestieri di Trevano), 2019 - 2020.
 Sono coinvolte le classi *I3AA* e *I3AC*; tutti gli allievi hanno lo stesso progetto da svolgere.
 
-I professori ***Luca Muggiasca*** e Geo ***Petrini*** sono i richiedenti del progetto SnowFlake.
+I professori ***Luca Muggiasca***  e ***Geo Petrini*** sono i richiedenti del progetto SnowFlake.
 
 ### Abstract
  
@@ -68,29 +68,9 @@ Con questo software è possibile provare vari schemi di taglio senza sprecare ca
 
 ### Analisi del dominio
 
-  Questo capitolo dovrebbe descrivere il contesto in cui il prodotto verrà
-  utilizzato, da questa analisi dovrebbero scaturire le risposte a quesiti
-  quali ad esempio:
+Il prodotto verrà utilizzato principalmente da utenti dalla medio-bassa conoscenza informatica, perciò l'interfaccia utente dovrà essere intuitiva ed il prodotto dovrà equipaggiare una piccola guida di utilizzo.
+Gli utenti che utilizzeranno tale software sono persone che esercitano hobby di manualità e di bricolage.
 
-  -   Background/Situazione iniziale
-
-  -   Quale è e come è organizzato il contesto in cui il prodotto dovrà
-      funzionare?
-
-  -   Come viene risolto attualmente il problema? Esiste già un prodotto
-      simile?
-
-  -   Chi sono gli utenti? Che bisogni hanno? Come e dove lavorano?
-
-  -   Che competenze/conoscenze/cultura posseggono gli utenti in relazione
-      con il problema?
-
-  -   Esistono convenzioni/standard applicati nel dominio?
-
-  -   Che conoscenze teoriche bisogna avere/acquisire per poter operare
-      efficacemente nel dominio?
-
-  -   …
 
 ### Analisi e specifica dei requisiti
 
@@ -99,10 +79,10 @@ Con questo software è possibile provare vari schemi di taglio senza sprecare ca
 | 001 | Dev'essere creato un sito adibito al download e alla descrizione/guida del progetto | 1 | 1.0 |...|
 | 002 | I punti di taglio sono inseriti con un semplice click| 1 | 1.0 |...|
 | 003 | Il percorso deve avere le funzioni: "Inserisci"/"Reset" I punti si possono rimuovere con il click destro, mentre cliccando su un punto già esistente lo si può spostare. | 1 | 1.0 |...|
-| 004 | Il fiocco di neve viene generato tramite il tasto "Generate", posto in basso a destra. Il fiocco di neve non viene generato in tempo reale | 1 | 1.0 |...|
+| 004 |Il fiocco di neve viene generato in tempo reale | 1 | 1.0 |...|
 | 005 | L'utente può salvare il fiocco di neve in un file SVG o in un file PNG (per l'ultimo può scegliere la dimensione) e può scegliere la cartella nella quale immagazzinarli | 1 | 1.0 |...|
 | 006 | L'utente può salvare i punti di taglio in un file serializzato; al momento del salvataggio può scegliere il path nel quale salvarlo | 1 | 1.0 |...|
-| 007 | Nella schermata di generazione deve esserci un tasto “Download” | 1 | 1.0 |...|
+| 007 | Nella schermata deve esserci un tasto “Download” | 1 | 1.0 |...|
 | 008 | La finestra deve avere dimensioni minime di 1024x768 e dev'essere ridimensionabile | 1 | 1.0 |...|
 | 009 | L'utente può caricare un percorso di taglio precedentemente salvato. | 1 | 1.0 |...|
 | 010 | All'avvio del programma viene mostrata una maschera dove si può scegliere se creare un nuovo fiocco di neve oppure aprire un file con un percorso di taglio già esistente, dove sono presenti i crediti e i link al sito web e a github | 1 | 1.0 |...|
@@ -117,18 +97,6 @@ funzionalità del prodotto.
 
 ![](/Users/lucamazza/Desktop/SnowFlake.png)
 
-Prima di stabilire una pianificazione bisogna avere almeno una vaga idea
-del modello di sviluppo che si intende adottare. In questa sezione
-bisognerà inserire il modello concettuale di sviluppo che si seguirà
-durante il progetto. Gli elementi di riferimento per una buona
-pianificazione derivano da una scomposizione top-down della problematica
-del progetto.
-
-La pianificazione può essere rappresentata mediante un diagramma di
-Gantt.
-
-Se si usano altri metodi di pianificazione (es scrum), dovranno apparire
-in questo capitolo.
 
 ### Analisi dei mezzi
 I mezzi che abbiamo a disposizione per la creazione del progetto sono:
@@ -139,7 +107,8 @@ I mezzi che abbiamo a disposizione per la creazione del progetto sono:
 |Oracle Java®|12.0|Sviluppo|
 |Apache NetBeans®|11.1|Sviluppo|
 |MacDown®|0.7.1|Documentazione|
-|GitHub Desktop|2.1.3|Documentazione|
+|Java API JavaDoc|12.1|Informazione|
+
 
 L'applicazione verrà sviluppata su piattaforma **macOS** 10.14 ma sarà utilizzabile su qualsiasi macchina abbia installata la ***JRE*** (*Java Runtime Environment*).
 
@@ -161,7 +130,7 @@ Descrive:
 -   I flussi di informazione in ingresso ed in uscita e le
     relative elaborazioni. Può utilizzare *diagrammi di flusso dei
     dati* (DFD).
-
+    
 -   Eventuale sitemap
 
 ### Design dei dati e database
@@ -277,33 +246,6 @@ facilmente generalizzabili o sono specifici di un caso particolare? ecc
 
 ## Bibliografia
 
-### Bibliografia per articoli di riviste
-1.  Cognome e nome (o iniziali) dell’autore o degli autori, o nome
-    dell’organizzazione,
-
-2.  Titolo dell’articolo (tra virgolette),
-
-3.  Titolo della rivista (in italico),
-
-4.  Anno e numero
-
-5.  Pagina iniziale dell’articolo,
-
-### Bibliografia per libri
-
-
-1.  Cognome e nome (o iniziali) dell’autore o degli autori, o nome
-    dell’organizzazione,
-
-2.  Titolo del libro (in italico),
-
-3.  ev. Numero di edizione,
-
-4.  Nome dell’editore,
-
-5.  Anno di pubblicazione,
-
-6.  ISBN.
 
 ### Sitografia
 

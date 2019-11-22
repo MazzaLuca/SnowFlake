@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package snowflake;
+package snowpackage;
 
 import java.awt.Color;
 import javax.swing.JColorChooser;
@@ -53,25 +53,17 @@ public class MainFrame extends javax.swing.JFrame {
         showLine = new javax.swing.JToggleButton();
         pickTriangleColor = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        resetCuts = new javax.swing.JButton();
+        savePoly = new javax.swing.JButton();
+        pointSize = new javax.swing.JSlider();
+        mousePositionLabel = new javax.swing.JLabel();
+        snowFlakePanel = new snowpackage.SnowFlakePanel();
         jPanel1 = new javax.swing.JPanel();
-        generateSnowFlake = new javax.swing.JButton();
-        snowFlakePanel = new snowflake.SnowFlakePanel();
-        menuBar = new javax.swing.JMenuBar();
-        SaveAs = new javax.swing.JMenu();
-        SaveAsPng = new javax.swing.JMenuItem();
-        SaveAsSvg = new javax.swing.JMenuItem();
-        Edit = new javax.swing.JMenu();
-        Reset = new javax.swing.JMenuItem();
-        Undo = new javax.swing.JMenuItem();
-        Redo = new javax.swing.JMenuItem();
-        View = new javax.swing.JMenu();
-        Preview = new javax.swing.JMenuItem();
-        showLines = new javax.swing.JCheckBoxMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1280, 720));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
 
         showLine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/snowflake/img/PolygonIcon.png"))); // NOI18N
         showLine.addActionListener(new java.awt.event.ActionListener() {
@@ -90,26 +82,39 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2.add(pickTriangleColor);
         jPanel2.add(jSeparator2);
 
-        jButton2.setText("jButton2");
-        jPanel2.add(jButton2);
+        resetCuts.setText("Reset");
+        resetCuts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetCutsActionPerformed(evt);
+            }
+        });
+        jPanel2.add(resetCuts);
 
-        jButton3.setText("jButton3");
-        jButton3.setMaximumSize(new java.awt.Dimension(70, 70));
-        jPanel2.add(jButton3);
+        savePoly.setText("Save polygon");
+        savePoly.setMaximumSize(new java.awt.Dimension(70, 70));
+        jPanel2.add(savePoly);
+
+        pointSize.setMaximum(50);
+        pointSize.setMinimum(5);
+        pointSize.setToolTipText("");
+        pointSize.setValue(5);
+        pointSize.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pointSizeStateChanged(evt);
+            }
+        });
+        jPanel2.add(pointSize);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+        mousePositionLabel.setText("jLabel1");
+        getContentPane().add(mousePositionLabel, java.awt.BorderLayout.PAGE_END);
 
-        generateSnowFlake.setText("Generate");
-        generateSnowFlake.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generateSnowFlakeActionPerformed(evt);
+        snowFlakePanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                snowFlakePanelMouseMoved(evt);
             }
         });
-        jPanel1.add(generateSnowFlake);
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout snowFlakePanelLayout = new javax.swing.GroupLayout(snowFlakePanel);
         snowFlakePanel.setLayout(snowFlakePanelLayout);
@@ -119,120 +124,16 @@ public class MainFrame extends javax.swing.JFrame {
         );
         snowFlakePanelLayout.setVerticalGroup(
             snowFlakePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 706, Short.MAX_VALUE)
+            .addGap(0, 737, Short.MAX_VALUE)
         );
 
         getContentPane().add(snowFlakePanel, java.awt.BorderLayout.CENTER);
 
-        SaveAs.setText("Save as");
-
-        SaveAsPng.setText("PNG");
-        SaveAsPng.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveAsPngActionPerformed(evt);
-            }
-        });
-        SaveAs.add(SaveAsPng);
-
-        SaveAsSvg.setText("SVG");
-        SaveAsSvg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveAsSvgActionPerformed(evt);
-            }
-        });
-        SaveAs.add(SaveAsSvg);
-
-        menuBar.add(SaveAs);
-
-        Edit.setText("Edit");
-
-        Reset.setText("Reset");
-        Reset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResetActionPerformed(evt);
-            }
-        });
-        Edit.add(Reset);
-
-        Undo.setText("Undo");
-        Undo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UndoActionPerformed(evt);
-            }
-        });
-        Edit.add(Undo);
-
-        Redo.setText("Redo");
-        Redo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RedoActionPerformed(evt);
-            }
-        });
-        Edit.add(Redo);
-
-        menuBar.add(Edit);
-
-        View.setText("View");
-
-        Preview.setText("Preview");
-        Preview.setMinimumSize(new java.awt.Dimension(1280, 720));
-        Preview.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PreviewActionPerformed(evt);
-            }
-        });
-        View.add(Preview);
-
-        showLines.setSelected(true);
-        showLines.setText("Show lines");
-        showLines.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showLinesActionPerformed(evt);
-            }
-        });
-        View.add(showLines);
-
-        menuBar.add(View);
-
-        setJMenuBar(menuBar);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+        getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void SaveAsPngActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsPngActionPerformed
-        // Save as PNG
-    }//GEN-LAST:event_SaveAsPngActionPerformed
-
-    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
-        snowFlakePanel.poly.reset();
-        snowFlakePanel.points.clear();
-        snowFlakePanel.repaint();
-    }//GEN-LAST:event_ResetActionPerformed
-
-    private void SaveAsSvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveAsSvgActionPerformed
-        // Save as SVG
-    }//GEN-LAST:event_SaveAsSvgActionPerformed
-
-    private void UndoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UndoActionPerformed
-        // Undo
-    }//GEN-LAST:event_UndoActionPerformed
-
-    private void RedoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RedoActionPerformed
-        // Redo
-    }//GEN-LAST:event_RedoActionPerformed
-
-    private void PreviewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviewActionPerformed
-        // preview
-    }//GEN-LAST:event_PreviewActionPerformed
-
-    private void showLinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLinesActionPerformed
-
-    }//GEN-LAST:event_showLinesActionPerformed
-
-    private void generateSnowFlakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateSnowFlakeActionPerformed
-        snowFlakePanel.generated = !snowFlakePanel.generated;
-        snowFlakePanel.repaint();
-    }//GEN-LAST:event_generateSnowFlakeActionPerformed
 
     private void pickTriangleColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickTriangleColorActionPerformed
         JColorChooser jcc = new JColorChooser();
@@ -245,6 +146,22 @@ public class MainFrame extends javax.swing.JFrame {
         snowFlakePanel.showLines = !snowFlakePanel.showLines;
         snowFlakePanel.repaint();
     }//GEN-LAST:event_showLineActionPerformed
+
+    private void snowFlakePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snowFlakePanelMouseMoved
+        mousePositionLabel.setText(evt.getX() + " " + evt.getY());
+    }//GEN-LAST:event_snowFlakePanelMouseMoved
+
+    private void resetCutsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetCutsActionPerformed
+        snowFlakePanel.poly.reset();
+        snowFlakePanel.points.clear();
+        snowFlakePanel.repaint();
+    }//GEN-LAST:event_resetCutsActionPerformed
+
+    private void pointSizeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pointSizeStateChanged
+        snowFlakePanel.RAD = pointSize.getValue();
+        System.out.println(snowFlakePanel.RAD);
+        repaint();
+    }//GEN-LAST:event_pointSizeStateChanged
 
     /**
      * @param args the command line arguments
@@ -282,26 +199,16 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Edit;
-    private javax.swing.JMenuItem Preview;
-    private javax.swing.JMenuItem Redo;
-    private javax.swing.JMenuItem Reset;
-    private javax.swing.JMenu SaveAs;
-    private javax.swing.JMenuItem SaveAsPng;
-    private javax.swing.JMenuItem SaveAsSvg;
-    private javax.swing.JMenuItem Undo;
-    private javax.swing.JMenu View;
-    private javax.swing.JButton generateSnowFlake;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JLabel mousePositionLabel;
     private javax.swing.JButton pickTriangleColor;
+    private javax.swing.JSlider pointSize;
+    private javax.swing.JButton resetCuts;
+    private javax.swing.JButton savePoly;
     private javax.swing.JToggleButton showLine;
-    private javax.swing.JCheckBoxMenuItem showLines;
-    private snowflake.SnowFlakePanel snowFlakePanel;
+    private snowpackage.SnowFlakePanel snowFlakePanel;
     // End of variables declaration//GEN-END:variables
 }

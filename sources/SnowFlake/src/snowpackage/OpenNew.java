@@ -21,7 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package snowflake;
+
+package snowpackage;
 
 /**
  *
@@ -47,72 +48,35 @@ public class OpenNew extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        newFile = new javax.swing.JButton();
-        openFile = new javax.swing.JButton();
+        NewFlake = new javax.swing.JButton();
+        OpenFlake = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(51, 204, 255));
-        setMaximumSize(new java.awt.Dimension(600, 350));
         setMinimumSize(new java.awt.Dimension(600, 350));
-        setPreferredSize(new java.awt.Dimension(600, 350));
         setSize(new java.awt.Dimension(600, 350));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        NewFlake.setText("New");
+        NewFlake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewFlakeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(NewFlake, new java.awt.GridBagConstraints());
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel3.setLayout(new java.awt.BorderLayout());
-
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/snowflake/img/insta.png"))); // NOI18N
-        jLabel1.setIconTextGap(0);
-        jPanel3.add(jLabel1, java.awt.BorderLayout.CENTER);
-
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
-
-        newFile.setText("New");
-        jPanel1.add(newFile);
-
-        openFile.setText("Open");
-        jPanel1.add(openFile);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 816, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 567, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        OpenFlake.setText("Open");
+        getContentPane().add(OpenFlake, new java.awt.GridBagConstraints());
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void NewFlakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewFlakeActionPerformed
+        this.dispose();
+        MainFrame sfp = new MainFrame();
+        sfp.setVisible(true);
+    }//GEN-LAST:event_NewFlakeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,11 +121,7 @@ public class OpenNew extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JButton newFile;
-    private javax.swing.JButton openFile;
+    private javax.swing.JButton NewFlake;
+    private javax.swing.JButton OpenFlake;
     // End of variables declaration//GEN-END:variables
 }

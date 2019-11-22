@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowflake/Triangle.java</file>
-            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowflake/OpenNew.java</file>
-            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowflake/SnowFlakePanel.java</file>
-            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowflake/MainFrame.java</file>
+            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowpackage/OpenNew.java</file>
+            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowpackage/Triangle.java</file>
+            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowpackage/SnowFlakePanel.java</file>
+            <file>file:/Users/lucamazza/Documents/GitHub/SnowFlake/sources/SnowFlake/src/snowpackage/MainFrame.java</file>
         </group>
     </open-files>
 </project-private>
