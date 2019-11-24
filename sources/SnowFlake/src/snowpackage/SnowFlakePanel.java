@@ -33,6 +33,7 @@ import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Area;
+import java.awt.geom.PathIterator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,21 +47,8 @@ public class SnowFlakePanel extends javax.swing.JPanel {
      * 
      */
     Point mousePosition;
-    
-    /**
-     * 
-     */
-    Polygon poly;
-    
-    /**
-     * 
-     */
-    List<Point> points;
-    
-    /**
-     * 
-     */
-    boolean showLines;
+
+    TrianglePanel tf;
     
     /**
      * 
@@ -90,17 +78,14 @@ public class SnowFlakePanel extends javax.swing.JPanel {
     /**
      *
      */
-    int RAD;
+    int RAD = 5;
     
     /**
      * Creates new form TrianglePanel
      */
     public SnowFlakePanel() {
-        this.showLines = true;
-        this.poly = new Polygon();
-        this.points = new ArrayList<>();
         this.mousePosition = new Point(0, 0);
-        this.generated = false;
+        this.generated = true;
         
         initComponents();
     }
@@ -118,36 +103,13 @@ public class SnowFlakePanel extends javax.swing.JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                              RenderingHints.VALUE_TEXT_ANTIALIAS_ON );
         this.t1 = new Triangle(this.getHeight(), this.getWidth(), this.generated);
-        Area triangle = new Area(this.t1.triangle);
-        Area cutArea = new Area(this.poly);
+        Area triangle = this.tf.triangle;
         g2d.setColor(this.triangleColor);
-        if(this.poly.npoints > 2){
-            triangle.subtract(cutArea);
-        }
-        g2d.fill(triangle);
-        this.center = new Point(this.t1.xEs[1], this.t1.yS[1]);
+        this.center = new Point(this.tf.center.x, this.tf.center.y);
         for (int i = 6; i <= 36; i += 6) {
-            g2d.fill(rotateArea(flipArea(triangle), i*10));
-            g2d.fill(rotateArea(triangle, i*10));
+            g2d.fill(translateToCenter(rotateArea(flipArea(triangle), i*10)));
+            g2d.fill(translateToCenter(rotateArea(triangle, i*10)));
         }
-        
-        
-        if(showLines){
-            if(this.triangleColor == Color.BLACK){
-                g2d.setColor(Color.WHITE);
-            }else{
-                g2d.setColor(Color.BLACK);
-            }
-            g2d.draw(triangle);
-            g2d.setColor(new Color(120, 30, 30, 255));
-            g2d.draw(cutArea);
-            for (Point point : this.points) {
-                g2d.setColor(new Color(100, 100, 100, 100));
-                g2d.fillOval(point.x - this.RAD, point.y - this.RAD, this.RAD*2, this.RAD*2);
-                g2d.setColor(new Color(0, 0, 0, 255));
-                g2d.drawOval(point.x - this.RAD, point.y - this.RAD, this.RAD*2, this.RAD*2);
-            }
-}   
     }
 
     /**
@@ -164,6 +126,16 @@ public class SnowFlakePanel extends javax.swing.JPanel {
         ty1.concatenate(ty2);
         ty1.concatenate(ty3);
         return ty1.createTransformedShape(origPoints);
+    }
+    public Shape translateToCenter(Shape origPoints){
+        AffineTransform ty1 = new AffineTransform();
+        ty1.translate(-this.center.x, -this.center.y);
+        AffineTransform ty2 = new AffineTransform();
+        ty2.translate(this.getWidth()/2, this.getHeight()/2);
+        AffineTransform ty = new AffineTransform();
+        ty.concatenate(ty1);
+        ty.concatenate(ty2);
+        return ty.createTransformedShape(origPoints);
     }
     
     /**
@@ -187,17 +159,6 @@ public class SnowFlakePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                formMouseDragged(evt);
-            }
-        });
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,59 +170,6 @@ public class SnowFlakePanel extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * 
-     * @param evt 
-     */
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if(evt.getButton() == evt.BUTTON1){
-            this.poly.addPoint(evt.getX(), evt.getY());
-            this.points.add(evt.getPoint());
-            repaint();
-        }else if(evt.getButton() == evt.BUTTON3){
-            for (Point point : points) {
-                if(evt.getPoint().distance(point) <= this.RAD){
-                    this.points.remove(point);
-                    break;
-                }
-            }
-            this.poly.reset();
-            int[] x = new int[points.size()];
-            int[] y = new int[points.size()];
-            for (int i = 0; i < this.points.size(); i++) {
-                x[i] = this.points.get(i).x;
-                y[i] = this.points.get(i).y;
-                this.poly = new Polygon(x, y, this.points.size());
-                repaint();
-            }
-        }
-    }//GEN-LAST:event_formMouseClicked
-
-    /**
-     * 
-     * @param evt 
-     */
-    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        for (Point point : points) {
-                if(evt.getPoint().distance(point) <= this.RAD){
-                    int index = this.points.indexOf(point);
-                    this.points.add(index, evt.getPoint());
-//                    this.points.add(evt.getPoint());
-                    this.points.remove(point);
-                    break;
-                }
-        }
-        this.poly.reset();
-        int[] x = new int[points.size()];
-        int[] y = new int[points.size()];
-        for (int i = 0; i < this.points.size(); i++) {
-            x[i] = this.points.get(i).x;
-            y[i] = this.points.get(i).y;
-            this.poly = new Polygon(x, y, this.points.size());
-        }
-        repaint();
-    }//GEN-LAST:event_formMouseDragged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

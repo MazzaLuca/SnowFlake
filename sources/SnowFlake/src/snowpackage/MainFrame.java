@@ -37,6 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        snowFlakePanel.tf = trianglePanel;
     }
 
     /**
@@ -48,68 +49,38 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
-        showLine = new javax.swing.JToggleButton();
-        pickTriangleColor = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        resetCuts = new javax.swing.JButton();
-        savePoly = new javax.swing.JButton();
-        pointSize = new javax.swing.JSlider();
         mousePositionLabel = new javax.swing.JLabel();
         snowFlakePanel = new snowpackage.SnowFlakePanel();
         jPanel1 = new javax.swing.JPanel();
+        jToolBar2 = new javax.swing.JToolBar();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        pickTriangleColor = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        resetCuts = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
+        savePoly = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
+        jToolBar1 = new javax.swing.JToolBar();
+        pointSize = new javax.swing.JSlider();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0));
+        jToolBar3 = new javax.swing.JToolBar();
+        trianglePanel = new snowpackage.TrianglePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1280, 720));
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
-
-        showLine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/snowflake/img/PolygonIcon.png"))); // NOI18N
-        showLine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showLineActionPerformed(evt);
-            }
-        });
-        jPanel2.add(showLine);
-
-        pickTriangleColor.setText("Color");
-        pickTriangleColor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pickTriangleColorActionPerformed(evt);
-            }
-        });
-        jPanel2.add(pickTriangleColor);
-        jPanel2.add(jSeparator2);
-
-        resetCuts.setText("Reset");
-        resetCuts.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetCutsActionPerformed(evt);
-            }
-        });
-        jPanel2.add(resetCuts);
-
-        savePoly.setText("Save polygon");
-        savePoly.setMaximumSize(new java.awt.Dimension(70, 70));
-        jPanel2.add(savePoly);
-
-        pointSize.setMaximum(50);
-        pointSize.setMinimum(5);
-        pointSize.setToolTipText("");
-        pointSize.setValue(5);
-        pointSize.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                pointSizeStateChanged(evt);
-            }
-        });
-        jPanel2.add(pointSize);
-
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         mousePositionLabel.setText("jLabel1");
         getContentPane().add(mousePositionLabel, java.awt.BorderLayout.PAGE_END);
 
+        snowFlakePanel.setBackground(new java.awt.Color(255, 255, 255));
         snowFlakePanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 snowFlakePanelMouseMoved(evt);
@@ -120,11 +91,11 @@ public class MainFrame extends javax.swing.JFrame {
         snowFlakePanel.setLayout(snowFlakePanelLayout);
         snowFlakePanelLayout.setHorizontalGroup(
             snowFlakePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1280, Short.MAX_VALUE)
+            .addGap(0, 964, Short.MAX_VALUE)
         );
         snowFlakePanelLayout.setVerticalGroup(
             snowFlakePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 737, Short.MAX_VALUE)
+            .addGap(0, 1284, Short.MAX_VALUE)
         );
 
         getContentPane().add(snowFlakePanel, java.awt.BorderLayout.CENTER);
@@ -132,36 +103,128 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridBagLayout());
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_END);
 
+        jToolBar2.setRollover(true);
+        jToolBar2.add(jSeparator4);
+
+        pickTriangleColor.setText("Color");
+        pickTriangleColor.setFocusable(false);
+        pickTriangleColor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        pickTriangleColor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        pickTriangleColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickTriangleColorActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(pickTriangleColor);
+        jToolBar2.add(jSeparator2);
+
+        resetCuts.setText("Reset");
+        resetCuts.setFocusable(false);
+        resetCuts.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        resetCuts.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        resetCuts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetCutsActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(resetCuts);
+        jToolBar2.add(jSeparator5);
+
+        savePoly.setText("Save polygon");
+        savePoly.setFocusable(false);
+        savePoly.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        savePoly.setMaximumSize(new java.awt.Dimension(70, 70));
+        savePoly.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(savePoly);
+        jToolBar2.add(jSeparator3);
+
+        jToolBar1.setRollover(true);
+        jToolBar2.add(jToolBar1);
+
+        pointSize.setMaximum(50);
+        pointSize.setMinimum(5);
+        pointSize.setToolTipText("");
+        pointSize.setValue(5);
+        pointSize.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                pointSizeStateChanged(evt);
+            }
+        });
+        jToolBar2.add(pointSize);
+        jToolBar2.add(filler4);
+        jToolBar2.add(filler2);
+        jToolBar2.add(filler1);
+
+        getContentPane().add(jToolBar2, java.awt.BorderLayout.PAGE_START);
+
+        jToolBar3.setRollover(true);
+
+        trianglePanel.setBackground(new java.awt.Color(255, 255, 255));
+        trianglePanel.setMaximumSize(new java.awt.Dimension(300, 500));
+        trianglePanel.setMinimumSize(new java.awt.Dimension(300, 500));
+        trianglePanel.setOpaque(false);
+        trianglePanel.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                trianglePanelMouseDragged(evt);
+            }
+        });
+        trianglePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                trianglePanelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout trianglePanelLayout = new javax.swing.GroupLayout(trianglePanel);
+        trianglePanel.setLayout(trianglePanelLayout);
+        trianglePanelLayout.setHorizontalGroup(
+            trianglePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+        trianglePanelLayout.setVerticalGroup(
+            trianglePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 500, Short.MAX_VALUE)
+        );
+
+        jToolBar3.add(trianglePanel);
+        trianglePanel.getAccessibleContext().setAccessibleParent(snowFlakePanel);
+
+        getContentPane().add(jToolBar3, java.awt.BorderLayout.LINE_END);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void snowFlakePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snowFlakePanelMouseMoved
+        mousePositionLabel.setText(evt.getX() + " " + evt.getY());
+    }//GEN-LAST:event_snowFlakePanelMouseMoved
+
+    private void pointSizeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pointSizeStateChanged
+        trianglePanel.RAD = pointSize.getValue();
+        trianglePanel.repaint();
+    }//GEN-LAST:event_pointSizeStateChanged
+
+    private void resetCutsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetCutsActionPerformed
+        trianglePanel.poly.reset();
+        trianglePanel.points.clear();
+        trianglePanel.repaint();
+        snowFlakePanel.repaint();
+    }//GEN-LAST:event_resetCutsActionPerformed
 
     private void pickTriangleColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickTriangleColorActionPerformed
         JColorChooser jcc = new JColorChooser();
         Color c = jcc.showDialog(null, "Select a color", Color.BLACK);
         snowFlakePanel.triangleColor = c;
         snowFlakePanel.repaint();
+        trianglePanel.triangleColor = c;
+        trianglePanel.repaint();
     }//GEN-LAST:event_pickTriangleColorActionPerformed
 
-    private void showLineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showLineActionPerformed
-        snowFlakePanel.showLines = !snowFlakePanel.showLines;
+    private void trianglePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trianglePanelMouseClicked
         snowFlakePanel.repaint();
-    }//GEN-LAST:event_showLineActionPerformed
+    }//GEN-LAST:event_trianglePanelMouseClicked
 
-    private void snowFlakePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_snowFlakePanelMouseMoved
-        mousePositionLabel.setText(evt.getX() + " " + evt.getY());
-    }//GEN-LAST:event_snowFlakePanelMouseMoved
-
-    private void resetCutsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetCutsActionPerformed
-        snowFlakePanel.poly.reset();
-        snowFlakePanel.points.clear();
+    private void trianglePanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trianglePanelMouseDragged
         snowFlakePanel.repaint();
-    }//GEN-LAST:event_resetCutsActionPerformed
-
-    private void pointSizeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pointSizeStateChanged
-        snowFlakePanel.RAD = pointSize.getValue();
-        System.out.println(snowFlakePanel.RAD);
-        repaint();
-    }//GEN-LAST:event_pointSizeStateChanged
+    }//GEN-LAST:event_trianglePanelMouseDragged
 
     /**
      * @param args the command line arguments
@@ -199,16 +262,24 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JToolBar jToolBar3;
     private javax.swing.JLabel mousePositionLabel;
     private javax.swing.JButton pickTriangleColor;
     private javax.swing.JSlider pointSize;
     private javax.swing.JButton resetCuts;
     private javax.swing.JButton savePoly;
-    private javax.swing.JToggleButton showLine;
     private snowpackage.SnowFlakePanel snowFlakePanel;
+    private snowpackage.TrianglePanel trianglePanel;
     // End of variables declaration//GEN-END:variables
 }

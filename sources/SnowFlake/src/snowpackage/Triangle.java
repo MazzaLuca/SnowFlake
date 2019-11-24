@@ -61,9 +61,9 @@ public class Triangle {
     }
 
     public void calculateSizes(){
-        this.cath = (int)(WIDTH * (this.panelHeight/2)/HEIGHT) /(true?2:1);
+        this.cath = (int)(WIDTH * (this.panelHeight/2)/HEIGHT) /(this.generated?2:1);
         this.height = (int)(this.cath * Math.sqrt(3));
-        this.xEs[0] = (int)(this.panelWidth / (2.5 / (true?1.25:1)));
+        this.xEs[0] = (int)(this.panelWidth / ((this.generated?2.5:4) / (this.generated?1.25:1)));
         this.xEs[1] = this.xEs[0];
         this.xEs[2] = this.xEs[0] + this.cath;
         this.yS[0] = this.panelHeight / 4;
