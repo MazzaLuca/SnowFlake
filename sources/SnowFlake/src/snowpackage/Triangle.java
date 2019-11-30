@@ -1,7 +1,7 @@
 /**
  * The MIT License
  * 
- * Copyright 2019 lucamazza.
+ * Copyright 2019 Luca Mazza.
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
 */
+
 package snowpackage;
 
 import java.awt.Point;
@@ -28,25 +29,79 @@ import java.awt.Polygon;
 import java.util.List;
 
 /**
- *
+ * 
+ * 
  * @author Luca Mazza
  * @version 8 Nov 2019
  */
 public class Triangle {
+
+    /**
+     * 
+     */
     Polygon triangle = new Polygon();
+
+    /**
+     * 
+     */
     int height;
+
+    /**
+     * 
+     */
     int cath;
+
+    /**
+     * 
+     */
     int panelHeight;
+
+    /**
+     * 
+     */
     int panelWidth;
-    boolean generated;
-    int[] xEs = new int[3];
-    int[] yS = new int[3];
-    Polygon poly;
-    List<Point> points;
     
+    /**
+     * 
+     */
+    boolean generated;
+
+    /**
+     * 
+     */
+    int[] xEs = new int[3];
+
+    /**
+     * 
+     */
+    int[] yS = new int[3];
+
+    /**
+     * 
+     */
+    Polygon poly;
+
+    /**
+     * 
+     */
+    List<Point> points;
+
+    /**
+     * 
+     */
     public static final int WIDTH = 500;
+
+    /**
+     * 
+     */
     public static final double HEIGHT = 500 * Math.sqrt(3);
 
+    /**
+     *
+     * @param panelHeight
+     * @param panelWidth
+     * @param generated
+     */
     public Triangle(int panelHeight, int panelWidth, boolean generated) {
         this.panelHeight = panelHeight;
         this.panelWidth = panelWidth;
@@ -54,12 +109,19 @@ public class Triangle {
         this.calculateSizes();
     }
     
+    /**
+     *
+     * @param p
+     */
     public void addPolyPoint(Point p){
         Point p2 = new Point((p.x * WIDTH/this.cath), (int)(p.y * HEIGHT/this.cath));
         this.poly.addPoint(p2.x, p2.y);
         this.points.add(p2);
     }
 
+    /**
+     *
+     */
     public void calculateSizes(){
         this.cath = (int)(WIDTH * (this.panelHeight/2)/HEIGHT) /(this.generated?2:1);
         this.height = (int)(this.cath * Math.sqrt(3));

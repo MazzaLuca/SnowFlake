@@ -24,6 +24,11 @@
 
 package snowpackage;
 
+import java.io.File;
+import java.io.FilenameFilter;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author lucamazza
@@ -66,6 +71,11 @@ public class OpenNew extends javax.swing.JDialog {
         getContentPane().add(NewFlake, new java.awt.GridBagConstraints());
 
         OpenFlake.setText("Open");
+        OpenFlake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OpenFlakeActionPerformed(evt);
+            }
+        });
         getContentPane().add(OpenFlake, new java.awt.GridBagConstraints());
 
         pack();
@@ -74,9 +84,25 @@ public class OpenNew extends javax.swing.JDialog {
 
     private void NewFlakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewFlakeActionPerformed
         this.dispose();
-        MainFrame sfp = new MainFrame();
+        MainFrame sfp = new MainFrame(false, "");
         sfp.setVisible(true);
     }//GEN-LAST:event_NewFlakeActionPerformed
+
+    private void OpenFlakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenFlakeActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        FileNameExtensionFilter fnf = new FileNameExtensionFilter("Snowflake file (*.snowflake)", "snowflake");
+        jfc.setFileFilter(fnf);
+        jfc.showDialog(null, "Open");
+        try{
+            String handle = new String(jfc.getSelectedFile().toString());
+            MainFrame sfp = new MainFrame(true, handle);
+            this.dispose();
+            sfp.setVisible(true);
+        }catch(NullPointerException npe){
+            System.out.println("Closed");
+        }
+
+    }//GEN-LAST:event_OpenFlakeActionPerformed
 
     /**
      * @param args the command line arguments
