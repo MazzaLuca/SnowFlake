@@ -33,16 +33,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author lucamazza
+ * @author Luca Mazza
+ * @since 1.0
  */
 public class MainFrame extends javax.swing.JFrame {
-    
+
     /**
-     * 
-     */
-        
-    /**
-     * Creates new form MainFrame
+     * Creates new form MainFrame.
      */
     public MainFrame(boolean loader, String handle) {
         initComponents();
@@ -51,8 +48,11 @@ public class MainFrame extends javax.swing.JFrame {
             trianglePanel.deSerialize(handleFile);
         }
         snowFlakePanel.tf = trianglePanel;
+        strokePreviewPanel.setBackground(Color.black);
+        strokePreviewPanel.repaint();
+        fillPreviewPanel.setBackground(new Color(22, 152, 175));
+        fillPreviewPanel.repaint();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,16 +64,20 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        mousePositionLabel = new javax.swing.JLabel();
         snowFlakePanel = new snowpackage.SnowFlakePanel();
         jPanel1 = new javax.swing.JPanel();
         jToolBar2 = new javax.swing.JToolBar();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        pickTriangleColor = new javax.swing.JButton();
+        fillSelector = new javax.swing.JCheckBox();
+        fillPreviewPanel = new javax.swing.JPanel();
+        jSeparator7 = new javax.swing.JToolBar.Separator();
+        strokeSelector = new javax.swing.JCheckBox();
+        strokePreviewPanel = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         resetCuts = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
         savePoly = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         exportAsSVG = new javax.swing.JButton();
         exportAsPNG = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JToolBar.Separator();
@@ -92,20 +96,17 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        mousePositionLabel.setText("jLabel1");
-        getContentPane().add(mousePositionLabel, java.awt.BorderLayout.PAGE_END);
-
-        snowFlakePanel.setBackground(new java.awt.Color(255, 255, 255));
+        snowFlakePanel.setBackground(Color.WHITE);
 
         javax.swing.GroupLayout snowFlakePanelLayout = new javax.swing.GroupLayout(snowFlakePanel);
         snowFlakePanel.setLayout(snowFlakePanelLayout);
         snowFlakePanelLayout.setHorizontalGroup(
             snowFlakePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 964, Short.MAX_VALUE)
+            .addGap(0, 865, Short.MAX_VALUE)
         );
         snowFlakePanelLayout.setVerticalGroup(
             snowFlakePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1284, Short.MAX_VALUE)
+            .addGap(0, 728, Short.MAX_VALUE)
         );
 
         getContentPane().add(snowFlakePanel, java.awt.BorderLayout.CENTER);
@@ -116,19 +117,80 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar2.setRollover(true);
         jToolBar2.add(jSeparator4);
 
-        pickTriangleColor.setText("Color");
-        pickTriangleColor.setFocusable(false);
-        pickTriangleColor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        pickTriangleColor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        pickTriangleColor.addActionListener(new java.awt.event.ActionListener() {
+        fillSelector.setSelected(true);
+        fillSelector.setFocusable(false);
+        fillSelector.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        fillSelector.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        fillSelector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pickTriangleColorActionPerformed(evt);
+                fillSelectorActionPerformed(evt);
             }
         });
-        jToolBar2.add(pickTriangleColor);
+        jToolBar2.add(fillSelector);
+
+        fillPreviewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        fillPreviewPanel.setToolTipText("Fill");
+        fillPreviewPanel.setMaximumSize(new java.awt.Dimension(10, 10));
+        fillPreviewPanel.setMinimumSize(new java.awt.Dimension(10, 10));
+        fillPreviewPanel.setPreferredSize(new java.awt.Dimension(10, 10));
+        fillPreviewPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                fillPreviewPanelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fillPreviewPanelLayout = new javax.swing.GroupLayout(fillPreviewPanel);
+        fillPreviewPanel.setLayout(fillPreviewPanelLayout);
+        fillPreviewPanelLayout.setHorizontalGroup(
+            fillPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        fillPreviewPanelLayout.setVerticalGroup(
+            fillPreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+
+        jToolBar2.add(fillPreviewPanel);
+        jToolBar2.add(jSeparator7);
+
+        strokeSelector.setFocusable(false);
+        strokeSelector.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        strokeSelector.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        strokeSelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                strokeSelectorActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(strokeSelector);
+
+        strokePreviewPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        strokePreviewPanel.setToolTipText("Stroke");
+        strokePreviewPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        strokePreviewPanel.setMaximumSize(new java.awt.Dimension(10, 10));
+        strokePreviewPanel.setMinimumSize(new java.awt.Dimension(10, 10));
+        strokePreviewPanel.setPreferredSize(new java.awt.Dimension(10, 10));
+        strokePreviewPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                strokePreviewPanelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout strokePreviewPanelLayout = new javax.swing.GroupLayout(strokePreviewPanel);
+        strokePreviewPanel.setLayout(strokePreviewPanelLayout);
+        strokePreviewPanelLayout.setHorizontalGroup(
+            strokePreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+        strokePreviewPanelLayout.setVerticalGroup(
+            strokePreviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 8, Short.MAX_VALUE)
+        );
+
+        jToolBar2.add(strokePreviewPanel);
         jToolBar2.add(jSeparator2);
 
         resetCuts.setText("Reset");
+        resetCuts.setToolTipText("Reset");
         resetCuts.setFocusable(false);
         resetCuts.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         resetCuts.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -140,7 +202,8 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar2.add(resetCuts);
         jToolBar2.add(jSeparator5);
 
-        savePoly.setText("Save");
+        savePoly.setText("Snapshot");
+        savePoly.setToolTipText("Snapshot");
         savePoly.setFocusable(false);
         savePoly.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         savePoly.setMaximumSize(new java.awt.Dimension(70, 70));
@@ -151,8 +214,10 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jToolBar2.add(savePoly);
+        jToolBar2.add(jSeparator1);
 
         exportAsSVG.setText("Export as SVG");
+        exportAsSVG.setToolTipText("Export as SVG");
         exportAsSVG.setFocusable(false);
         exportAsSVG.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportAsSVG.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -164,6 +229,7 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar2.add(exportAsSVG);
 
         exportAsPNG.setText("Export as PNG");
+        exportAsPNG.setToolTipText("Export as PNG");
         exportAsPNG.setFocusable(false);
         exportAsPNG.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         exportAsPNG.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -176,6 +242,7 @@ public class MainFrame extends javax.swing.JFrame {
         jToolBar2.add(jSeparator6);
 
         NewFlake.setText("New");
+        NewFlake.setToolTipText("New snowflake");
         NewFlake.setFocusable(false);
         NewFlake.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         NewFlake.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -205,7 +272,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jToolBar3.setRollover(true);
 
-        trianglePanel.setBackground(new java.awt.Color(255, 255, 255));
+        trianglePanel.setBackground(Color.WHITE);
         trianglePanel.setMaximumSize(new java.awt.Dimension(300, 500));
         trianglePanel.setMinimumSize(new java.awt.Dimension(300, 500));
         trianglePanel.setOpaque(false);
@@ -213,13 +280,10 @@ public class MainFrame extends javax.swing.JFrame {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 trianglePanelMouseDragged(evt);
             }
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                trianglePanelMouseMoved(evt);
-            }
         });
         trianglePanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                trianglePanelMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                trianglePanelMouseReleased(evt);
             }
         });
 
@@ -243,16 +307,12 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * Repaints the <code>JPanel</code> object snowFlakePanel when the mouse is
+     * dragged on it, in order to achieve the simultaneous repainting of the two
+     * panels, recreating a live preview.
      * 
-     * @param evt 
-     */
-    private void trianglePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trianglePanelMouseClicked
-        snowFlakePanel.repaint();
-    }//GEN-LAST:event_trianglePanelMouseClicked
-
-    /**
-     * 
-     * @param evt 
+     * @param evt <code>MouseListener</code> event that register the whole list
+     * of mouse events
      */
     private void trianglePanelMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trianglePanelMouseDragged
         snowFlakePanel.repaint();
@@ -260,15 +320,8 @@ public class MainFrame extends javax.swing.JFrame {
 
     /**
      * 
-     * @param evt 
-     */
-    private void trianglePanelMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trianglePanelMouseMoved
-        mousePositionLabel.setText(evt.getX() + " " + evt.getY());
-    }//GEN-LAST:event_trianglePanelMouseMoved
-
-    /**
-     * 
-     * @param evt 
+     * @param evt <code>JSlider</code> event that register the whole list
+     * of mouse events.
      */
     private void pointSizeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_pointSizeStateChanged
         trianglePanel.RAD = pointSize.getValue();
@@ -277,39 +330,37 @@ public class MainFrame extends javax.swing.JFrame {
 
     /**
      * 
-     * @param evt 
+     * @param evt <code>JButton</code> event that register the whole list
+     * of mouse events.
      */
     private void resetCutsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetCutsActionPerformed
         Object[] options = { "Ok", "Cancel" };
-        JOptionPane.showOptionDialog(null,
-             "Are you sure you want to discard  all changes", "Warning",
+        int response = JOptionPane.showOptionDialog(null,
+             "Are you sure you want to discard all changes", "Warning",
              JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
              null, options, options[0]);
-        if(JOptionPane.YES_OPTION == 0){
+        if(JOptionPane.YES_OPTION == response){
             trianglePanel.poly.reset();
             trianglePanel.points.clear();
             trianglePanel.repaint();
             snowFlakePanel.repaint();
+            trianglePanel.fillColor = new Color(22, 152, 175);
+            trianglePanel.strokeColor = Color.BLACK;
+            snowFlakePanel.fillColor = new Color(22, 152, 175);
+            snowFlakePanel.strokeColor = Color.BLACK;
+            snowFlakePanel.tf = trianglePanel;
+            strokePreviewPanel.setBackground(Color.black);
+            strokePreviewPanel.repaint();
+            fillPreviewPanel.setBackground(new Color(22, 152, 175));
+            fillPreviewPanel.repaint();
         }
         snowFlakePanel.repaint();
     }//GEN-LAST:event_resetCutsActionPerformed
 
     /**
      * 
-     * @param evt 
-     */
-    private void pickTriangleColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickTriangleColorActionPerformed
-        JColorChooser jcc = new JColorChooser();
-        Color c = jcc.showDialog(null, "Select a color", Color.BLACK);
-        snowFlakePanel.triangleColor = c;
-        snowFlakePanel.repaint();
-        trianglePanel.triangleColor = c;
-        trianglePanel.repaint();
-    }//GEN-LAST:event_pickTriangleColorActionPerformed
-
-    /**
-     * 
-     * @param evt 
+     * @param evt <code>JButton</code> event that register the whole list
+     * of mouse events.
      */
     private void savePolyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePolyActionPerformed
         JFileChooser jfc = new JFileChooser();
@@ -326,14 +377,19 @@ public class MainFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_savePolyActionPerformed
 
+    /**
+     * 
+     * @param evt <code>JButton</code> event that register the whole list
+     * of mouse events.
+     */
     private void NewFlakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewFlakeActionPerformed
         if(!trianglePanel.points.isEmpty()){
             Object[] options = { "Ok", "Cancel" };
-            JOptionPane.showOptionDialog(null,
+            int response = JOptionPane.showOptionDialog(null,
                  "Are you sure you want to exit without saving?", "Warning",
                  JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE,
                  null, options, options[0]);
-            if(JOptionPane.NO_OPTION == 0){
+            if(JOptionPane.YES_OPTION == response){
                 OpenNew on = new OpenNew(null, false);
                 this.dispose();
                 on.setVisible(true);
@@ -346,6 +402,11 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_NewFlakeActionPerformed
 
+    /**
+     * 
+     * @param evt <code>JButton</code> event that register the whole list
+     * of mouse events.
+     */
     private void exportAsSVGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAsSVGActionPerformed
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter fnf = new FileNameExtensionFilter("SVG File (*.svg)", "SVG");
@@ -355,10 +416,14 @@ public class MainFrame extends javax.swing.JFrame {
             String handle = new String(jfc.getSelectedFile().toPath().toString());
             snowFlakePanel.generateSVG(handle);
         }catch(NullPointerException npe){
-            System.out.println("Closed");
         }
     }//GEN-LAST:event_exportAsSVGActionPerformed
 
+    /**
+     * 
+     * @param evt <code>JButton</code> event that register the whole list
+     * of mouse events.
+     */
     private void exportAsPNGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportAsPNGActionPerformed
         JFileChooser jfc = new JFileChooser();
         FileNameExtensionFilter fnf = new FileNameExtensionFilter("PNG File (*.png)", "PNG");
@@ -368,9 +433,60 @@ public class MainFrame extends javax.swing.JFrame {
             String handle = new String(jfc.getSelectedFile().toPath().toString());
             snowFlakePanel.generatePNG(handle, 600);
         }catch(NullPointerException npe){
-            System.out.println("Closed");
         }
     }//GEN-LAST:event_exportAsPNGActionPerformed
+    
+    /**
+     * 
+     * @param evt 
+     */
+    private void fillPreviewPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_fillPreviewPanelMouseClicked
+        JColorChooser jcc = new JColorChooser();
+        Color c = jcc.showDialog(null, "Select a color", Color.BLACK);
+        snowFlakePanel.fillColor = c;
+        snowFlakePanel.repaint();
+        trianglePanel.fillColor = c;
+        trianglePanel.repaint();
+        fillPreviewPanel.setBackground(c);
+        fillPreviewPanel.repaint();
+    }//GEN-LAST:event_fillPreviewPanelMouseClicked
+    
+    /**
+     * 
+     * @param evt 
+     */
+    private void strokePreviewPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strokePreviewPanelMouseClicked
+        JColorChooser jcc = new JColorChooser();
+        Color c = jcc.showDialog(null, "Select a color", Color.BLACK);
+        snowFlakePanel.strokeColor = c;
+        snowFlakePanel.repaint();
+        trianglePanel.strokeColor = c;
+        trianglePanel.repaint();
+        strokePreviewPanel.setBackground(c);
+        strokePreviewPanel.repaint();
+    }//GEN-LAST:event_strokePreviewPanelMouseClicked
+    
+    /**
+     * 
+     * @param evt 
+     */
+    private void fillSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fillSelectorActionPerformed
+        snowFlakePanel.fill = !snowFlakePanel.fill;
+        trianglePanel.fill = !trianglePanel.fill;
+        snowFlakePanel.repaint();
+        trianglePanel.repaint();
+    }//GEN-LAST:event_fillSelectorActionPerformed
+
+    private void strokeSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strokeSelectorActionPerformed
+        snowFlakePanel.stroke = !snowFlakePanel.stroke;
+        trianglePanel.stroke = !trianglePanel.stroke;
+        snowFlakePanel.repaint();
+        trianglePanel.repaint();
+    }//GEN-LAST:event_strokeSelectorActionPerformed
+
+    private void trianglePanelMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trianglePanelMouseReleased
+        snowFlakePanel.repaint();
+    }//GEN-LAST:event_trianglePanelMouseReleased
 
     /**
      * @param args the command line arguments
@@ -412,21 +528,25 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JLabel PointSizeLabel;
     private javax.swing.JButton exportAsPNG;
     private javax.swing.JButton exportAsSVG;
+    private javax.swing.JPanel fillPreviewPanel;
+    private javax.swing.JCheckBox fillSelector;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
     private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JToolBar.Separator jSeparator6;
+    private javax.swing.JToolBar.Separator jSeparator7;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JToolBar jToolBar3;
-    private javax.swing.JLabel mousePositionLabel;
-    private javax.swing.JButton pickTriangleColor;
     private javax.swing.JSlider pointSize;
     private javax.swing.JButton resetCuts;
     private javax.swing.JButton savePoly;
     private snowpackage.SnowFlakePanel snowFlakePanel;
+    private javax.swing.JPanel strokePreviewPanel;
+    private javax.swing.JCheckBox strokeSelector;
     private snowpackage.TrianglePanel trianglePanel;
     // End of variables declaration//GEN-END:variables
 }

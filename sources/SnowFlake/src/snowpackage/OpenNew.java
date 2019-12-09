@@ -31,7 +31,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
- * @author lucamazza
+ * @author Luca Mazza
+ * @since 1.0
  */
 public class OpenNew extends javax.swing.JDialog {
 
@@ -53,14 +54,23 @@ public class OpenNew extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        controlPanel = new javax.swing.JPanel();
         NewFlake = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         OpenFlake = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        credits = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(51, 204, 255));
+        setBackground(new java.awt.Color(153, 0, 255));
         setMinimumSize(new java.awt.Dimension(600, 350));
         setSize(new java.awt.Dimension(600, 350));
-        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        controlPanel.setBackground(new java.awt.Color(22, 152, 175));
+        controlPanel.setAlignmentX(1.0F);
+        controlPanel.setAlignmentY(1.0F);
+        controlPanel.setLayout(new java.awt.GridBagLayout());
 
         NewFlake.setText("New");
         NewFlake.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +78,10 @@ public class OpenNew extends javax.swing.JDialog {
                 NewFlakeActionPerformed(evt);
             }
         });
-        getContentPane().add(NewFlake, new java.awt.GridBagConstraints());
+        controlPanel.add(NewFlake, new java.awt.GridBagConstraints());
+
+        jLabel2.setText("                         ");
+        controlPanel.add(jLabel2, new java.awt.GridBagConstraints());
 
         OpenFlake.setText("Open");
         OpenFlake.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +89,21 @@ public class OpenNew extends javax.swing.JDialog {
                 OpenFlakeActionPerformed(evt);
             }
         });
-        getContentPane().add(OpenFlake, new java.awt.GridBagConstraints());
+        controlPanel.add(OpenFlake, new java.awt.GridBagConstraints());
+        controlPanel.add(jSeparator1, new java.awt.GridBagConstraints());
+
+        getContentPane().add(controlPanel, java.awt.BorderLayout.CENTER);
+
+        credits.setBackground(new java.awt.Color(22, 152, 175));
+
+        jLabel1.setBackground(new java.awt.Color(0, 204, 204));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("© Luca Mazza - https://lucamazza.info");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        credits.add(jLabel1);
+
+        getContentPane().add(credits, java.awt.BorderLayout.SOUTH);
 
         pack();
         setLocationRelativeTo(null);
@@ -149,5 +176,10 @@ public class OpenNew extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton NewFlake;
     private javax.swing.JButton OpenFlake;
+    private javax.swing.JPanel controlPanel;
+    private javax.swing.JPanel credits;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

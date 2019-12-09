@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2019 Luca Mazza.
+ * Copyright 2020 Luca Mazza.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,27 +37,27 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author lucamazza
+ * @since 1.0
  */
 public class TrianglePanel extends javax.swing.JPanel {
-    
+
     /**
      * 
      */
     Point mousePosition;
-    
+
     /**
      * 
      */
     Polygon poly;
-    
+
     /**
      * 
      */
@@ -69,7 +69,7 @@ public class TrianglePanel extends javax.swing.JPanel {
      * 
      */
     private Triangle t1;
-    
+
     /**
      * 
      */
@@ -78,20 +78,30 @@ public class TrianglePanel extends javax.swing.JPanel {
     /**
      * 
      */
-    Color triangleColor = Color.BLACK;
-    
-    
+    Color fillColor = new Color(22, 152, 175);
+    Color strokeColor = Color.BLACK;
+
     /**
      *
      */
     int RAD = 5;
-    
+
     /**
      * 
      */
     public Area triangle = new Area();
     
     /**
+     * 
+     */
+    boolean fill = true;
+    
+    /**
+     * 
+     */
+    boolean stroke = false;
+    /**
+     * 
      */
     public TrianglePanel() {
         this.poly = new Polygon();
@@ -116,22 +126,35 @@ public class TrianglePanel extends javax.swing.JPanel {
         this.t1 = new Triangle(this.getHeight(), this.getWidth(), false);
         this.triangle = new Area(this.t1.triangle);
         Area cutArea = new Area(this.poly);
-        g2d.setColor(this.triangleColor);
+        g2d.setColor(this.fillColor);
         if(this.poly.npoints > 2){
             triangle.subtract(cutArea);
         }
-        g2d.fill(triangle);
+        if(this.fill){
+            g2d.fill(this.triangle);
+        }
+        if(this.stroke){
+            g2d.setColor(this.strokeColor);
+            g2d.draw(this.triangle);
+        }
         this.center = new Point(this.t1.xEs[1], this.t1.yS[1]);
         g2d.setColor(new Color(120, 30, 30, 255));
         g2d.draw(cutArea);
         for (Point point : this.points) {
             g2d.setColor(new Color(100, 100, 100, 100));
-            g2d.fillOval(point.x - this.RAD, point.y - this.RAD, this.RAD*2, this.RAD*2);
+            g2d.fillOval(
+                    point.x - this.RAD,
+                    point.y - this.RAD,
+                    this.RAD*2,
+                    this.RAD*2);
             g2d.setColor(new Color(0, 0, 0, 255));
-            g2d.drawOval(point.x - this.RAD, point.y - this.RAD, this.RAD*2, this.RAD*2);
+            g2d.drawOval(point.x - this.RAD,
+                    point.y - this.RAD,
+                    this.RAD*2,
+                    this.RAD*2);
         }
     }
-    
+
     /**
      *
      * @param handle
@@ -145,10 +168,17 @@ public class TrianglePanel extends javax.swing.JPanel {
             out.close();
             fileOut.close();
         } catch (IOException i) {
-            i.printStackTrace();
+            JOptionPane jop = new JOptionPane();
+            jop.showOptionDialog(
+                    null,
+                    "Cannot write file " + handle + ". Code: tp158",
+                    "Error opening file",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.ERROR_MESSAGE,
+                    null, null, null);
         }
     }
-    
+
     /**
      * 
      * @param handle 
@@ -163,20 +193,24 @@ public class TrianglePanel extends javax.swing.JPanel {
                 this.points.clear();
             }
             for(int i = 0; i < this.poly.npoints; i++){
-                this.points.add(new Point(this.poly.xpoints[i], this.poly.ypoints[i]));
+                this.points.add(
+                        new Point(this.poly.xpoints[i], this.poly.ypoints[i]));
             }
             repaint();
             in.close();
             fileIn.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-            return;
-        } catch (ClassNotFoundException c) {
-            c.printStackTrace();
-            return;
+        } catch (IOException | ClassNotFoundException i) {
+            JOptionPane jop = new JOptionPane();
+            jop.showOptionDialog(
+                    null,
+                    "Cannot open file " + handle + ". Code: tp190",
+                    "Error opening file",
+                    JOptionPane.DEFAULT_OPTION,
+                    JOptionPane.ERROR_MESSAGE,
+                    null, null, null);
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -193,8 +227,8 @@ public class TrianglePanel extends javax.swing.JPanel {
             }
         });
         addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                formMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
             }
         });
 
@@ -209,34 +243,6 @@ public class TrianglePanel extends javax.swing.JPanel {
             .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * 
-     * @param evt 
-     */
-    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if(evt.getButton() == evt.BUTTON1){
-            this.poly.addPoint(evt.getX(), evt.getY());
-            this.points.add(evt.getPoint());
-            repaint();
-        }else if(evt.getButton() == evt.BUTTON3){
-            for (Point point : points) {
-                if(evt.getPoint().distance(point) <= this.RAD){
-                    this.points.remove(point);
-                    break;
-                }
-            }
-            this.poly.reset();
-            int[] x = new int[points.size()];
-            int[] y = new int[points.size()];
-            for (int i = 0; i < this.points.size(); i++) {
-                x[i] = this.points.get(i).x;
-                y[i] = this.points.get(i).y;
-                this.poly = new Polygon(x, y, this.points.size());
-                repaint();
-            }
-        }
-    }//GEN-LAST:event_formMouseClicked
 
     /**
      * 
@@ -266,6 +272,28 @@ public class TrianglePanel extends javax.swing.JPanel {
         }
         repaint();
     }//GEN-LAST:event_formMouseDragged
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        if(evt.getButton() == evt.BUTTON1){
+            this.poly.addPoint(evt.getX(), evt.getY());
+            this.points.add(evt.getPoint());
+        }else if(evt.getButton() == evt.BUTTON3){
+            for (Point point : points) {
+                if(evt.getPoint().distance(point) <= this.RAD){
+                    this.points.remove(point);
+                    break;
+                }
+            }
+            this.poly.reset();
+            int[] x = new int[points.size()];
+            int[] y = new int[points.size()];
+            for (int i = 0; i < this.points.size(); i++) {
+                x[i] = this.points.get(i).x;
+                y[i] = this.points.get(i).y;
+                this.poly = new Polygon(x, y, this.points.size());
+            }
+        }
+        repaint();    }//GEN-LAST:event_formMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

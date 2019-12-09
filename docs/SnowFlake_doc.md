@@ -95,7 +95,7 @@ funzionalità del prodotto.
 
 ### Pianificazione
 
-![](/Users/lucamazza/Desktop/SnowFlake.png)
+![](/Users/lucamazza/Documents/GitHub/SnowFlake/docs/SnowFlakeGantt.png)
 
 
 ### Analisi dei mezzi
@@ -108,6 +108,7 @@ I mezzi che abbiamo a disposizione per la creazione del progetto sono:
 |Apache NetBeans®|11.1|Sviluppo|
 |MacDown®|0.7.1|Documentazione|
 |Java API JavaDoc|12.1|Informazione|
+|Apache Batik Libraries|2.0|Tools programmazione|
 
 
 L'applicazione verrà sviluppata su piattaforma **macOS** 10.14 ma sarà utilizzabile su qualsiasi macchina abbia installata la ***JRE*** (*Java Runtime Environment*).
@@ -118,37 +119,6 @@ Questo capitolo descrive esaustivamente come deve essere realizzato il
 prodotto fin nei suoi dettagli. Una buona progettazione permette
 all’esecutore di evitare fraintendimenti e imprecisioni
 nell’implementazione del prodotto.
-
-### Design dell’architettura del sistema
-
-Descrive:
-
--   La struttura del programma/sistema lo schema di rete...
-
--   Gli oggetti/moduli/componenti che lo compongono.
-
--   I flussi di informazione in ingresso ed in uscita e le
-    relative elaborazioni. Può utilizzare *diagrammi di flusso dei
-    dati* (DFD).
-    
--   Eventuale sitemap
-
-### Design dei dati e database
-
-Descrizione delle strutture di dati utilizzate dal programma in base
-agli attributi e le relazioni degli oggetti in uso.
-
-### Schema E-R, schema logico e descrizione.
-
-Se il diagramma E-R viene modificato, sulla doc dovrà apparire l’ultima
-versione, mentre le vecchie saranno sui diari.
-
-### Design delle interfacce
-
-Descrizione delle interfacce interne ed esterne del sistema e
-dell’interfaccia utente. La progettazione delle interfacce è basata
-sulle informazioni ricavate durante la fase di analisi e realizzata
-tramite mockups.
 
 ### Design procedurale
 
@@ -163,31 +133,13 @@ ad esempio:
 
 -   Tabelle di routing
 
--   Diritti di accesso a condivisioni …
+-   Diritti di accesso a condivisioni…
 
 Questi documenti permetteranno di rappresentare i dettagli procedurali
 per la realizzazione del prodotto.
 
 ## Implementazione
 
-In questo capitolo dovrà essere mostrato come è stato realizzato il
-lavoro. Questa parte può differenziarsi dalla progettazione in quanto il
-risultato ottenuto non per forza può essere come era stato progettato.
-
-Sulla base di queste informazioni il lavoro svolto dovrà essere
-riproducibile.
-
-In questa parte è richiesto l’inserimento di codice sorgente/print
-screen di maschere solamente per quei passaggi particolarmente
-significativi e/o critici.
-
-Inoltre dovranno essere descritte eventuali varianti di soluzione o
-scelte di prodotti con motivazione delle scelte.
-
-Non deve apparire nessuna forma di guida d’uso di librerie o di
-componenti utilizzati. Eventualmente questa va allegata.
-
-Per eventuali dettagli si possono inserire riferimenti ai diari.
 
 ## Test
 
