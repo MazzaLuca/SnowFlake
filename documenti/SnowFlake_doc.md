@@ -50,10 +50,10 @@
 ## Introduzione
 
 ### Informazioni sul progetto
-Progetto individuale del primo semestre del terzo anno della ***SAMT*** (Scuola d'Arti e Mestieri di Trevano), 2019 - 2020.
+Progetto individuale del primo semestre del terzo anno della ***SAMT** (Scuola d'Arti e Mestieri di Trevano), 2019 - 2020.
 Sono coinvolte le classi *I3AA* e *I3AC*; tutti gli allievi hanno lo stesso progetto da svolgere.
 
-I professori ***Luca Muggiasca***  e ***Geo Petrini***q sono i richiedenti del progetto SnowFlake.
+I professori ***Luca Muggiasca***  e ***Geo Petrini*** sono i richiedenti del progetto SnowFlake.
 
 ### Abstract
  
@@ -61,15 +61,15 @@ Prima di avere a disposizione il software **SnowFlake** ogni fiocco di neve dove
 
 Senza il supporto di un software di autogenerazione non era possibile progettare uno schema di taglio per creare un fiocco di neve; prima si sarebbe dovuto disegnare precedentemente sul foglio di carta per poi piegarlo e trovare lo schema di taglio. Un lavoro infinito.
 
-Con questo software è possibile provare vari schemi di taglio senza sprecare carta, in modo più **veloce**, **pratico** e **intuitivo**, in quantità illimitata
+Con questo software è possibile provare vari schemi di taglio senza sprecare carta, in modo più **veloce**, **pratico** e **intuitivo**, in quantità illimitata.
 
 
 ## Analisi
 
 ### Analisi del dominio
 
-Il prodotto verrà utilizzato principalmente da utenti dalla medio-bassa conoscenza informatica, perciò l'interfaccia utente dovrà essere intuitiva ed il prodotto dovrà equipaggiare una piccola guida di utilizzo.
-Gli utenti che utilizzeranno tale software sono persone che esercitano hobby di manualità e di bricolage.
+Il prodotto verrà utilizzato principalmente da utenti dalla medio-bassa conoscenza informatica, perciò l'interfaccia utente dovrà essere **intuitiva** ed il prodotto dovrà equipaggiare una piccola guida di utilizzo.
+Gli utenti che utilizzeranno tale software sono persone che esercitano hobby di **manualità** e di bricolage.
 
 
 ### Analisi e specifica dei requisiti
@@ -78,13 +78,13 @@ Gli utenti che utilizzeranno tale software sono persone che esercitano hobby di 
 |---|---|---|---|-----|
 | 001 | Dev'essere creato un sito adibito al download e alla descrizione/guida del progetto | 1 | 1.0 |...|
 | 002 | I punti di taglio sono inseriti con un semplice click| 1 | 1.0 |...|
-| 003 | Il percorso deve avere la funzione "Reset" I punti si possono rimuovere con il click destro, mentre cliccando su un punto già esistente lo si può spostare. | 1 | 1.0 |...|
+| 003 | Il percorso deve avere la funzione "Reset" I punti si possono rimuovere con il click destro del mouse, mentre cliccando su un punto già esistente lo si può spostare. | 1 | 1.0 |...|
 | 004 | Il fiocco di neve viene generato in tempo reale. | 1 | 1.0 |...|
 | 005 | L'utente può salvare il fiocco di neve in un file SVG o in un file PNG e può scegliere la cartella nella quale immagazzinarli. Nel caso del PNG si deve scegliere la risoluzione dell'immagine. | 1 | 1.0 |...|
 | 006 | L'utente può salvare i punti di taglio in un file serializzato; al momento del salvataggio può scegliere il path nel quale salvarlo | 1 | 1.0 |...|
 | 007 | La finestra deve avere dimensioni minime di 1024x768 e dev'essere ridimensionabile | 1 | 1.0 |...|
 | 008 | L'utente può caricare un percorso di taglio precedentemente salvato. | 1 | 1.0 |...|
-| 009 | All'avvio del programma viene mostrata una maschera dove si può scegliere se creare un nuovo fiocco di neve oppure aprire un file con un percorso di taglio già esistente, dove sono presenti i crediti e i link al sito web e a github | 1 | 1.0 |...|
+| 009 | All'avvio del programma viene mostrata una maschera dove si può scegliere se creare un nuovo fiocco di neve oppure aprire un file con un percorso di taglio già esistente, dove sono presenti i crediti e i link al sito web e a GitHub | 1 | 1.0 |...|
 
 ### Use case
 Lo schema sottostante descrive l'use case del software.
@@ -92,7 +92,7 @@ Lo schema sottostante descrive l'use case del software.
 
 ### Pianificazione
 
-![](./img/)
+![](./img/SnowFlakeGantt.png)
 
 
 ### Analisi dei mezzi
@@ -104,8 +104,8 @@ I mezzi che abbiamo a disposizione per la creazione del progetto sono:
 |Oracle Java®|12.0|Sviluppo|
 |Apache NetBeans®|11.1|Sviluppo|
 |MacDown®|0.7.1|Documentazione|
-|Oracle API JavaDoc|12.1|Informazione|
-|Apache Batik Libraries|2.0|Tools programmazione|
+|Oracle API JavaDoc|12.1|Sviluppo e progettazione|
+|Apache Batik Libraries|2.0|Sviluppo|
 
 
 L'applicazione verrà sviluppata su piattaforma **macOS** 10.15 ma sarà utilizzabile su qualsiasi macchina abbia installata la ***JRE*** (*Java Runtime Environment*).
@@ -113,6 +113,20 @@ L'applicazione verrà sviluppata su piattaforma **macOS** 10.15 ma sarà utilizz
 ## Progettazione
 
 ![UML](./img/UML.png)
+
+###Design delle interfacce
+Il software sarà composto da due interfacce:
+
+####Prima interfaccia
+La prima interfaccia si presenta all'apertura dell'applicazione.
+Qui si potrà **scegliere** se aprire un nuovo fiocco di neve oppure se aprirne uno esistente.
+
+![](./img/Design1.png)
+
+####Seconda interfaccia
+La seconda interfaccia è quella che viene aperta in entrambe i casi della prima interfaccia.
+Si tratta dell'area di lavoro sul fiocco di neve, dove sono presenti un **triangolo** sul quale eseguire i tagli sulla sinistra e sulla destra viene stampato il **fiocco generato**.
+![](./img/Design.png)
 
 ## Implementazione
 Le classi create, come si può vedere dalla progettazione sono 5:
@@ -125,9 +139,9 @@ Le classi create, come si può vedere dalla progettazione sono 5:
 
 ###SnowFlake
 ![](./img/OpenNew.png)
-La classe *SnowFlake* (*JDialog*) si occupa di fornire all'utente una comoda ed intuitiva GUI nella quale può scegliere se aprire un nuovo documento *SnowFlake* oppure se aprirne uno esistente. Inoltre vi sono i link a tutte le piattaforme sociali dell'autore, incluso il sito web adibito al progetto.
+La classe *SnowFlake* (*JDialog*) si occupa di fornire all'utente una comoda ed intuitiva **GUI** nella quale può **scegliere** se aprire un nuovo documento *SnowFlake* oppure se aprirne uno esistente. Inoltre vi sono i **link** a tutte le piattaforme sociali dell'autore, incluso il sito web adibito al progetto.
 
-Questa funzionalità è permessa dal metodo *browse()*, sviluppato personalmente.
+Questa funzionalità è permessa dal metodo *browse()*, sviluppato **personalmente**.
 
 ```java
 public void browse(String url){
@@ -137,9 +151,11 @@ public void browse(String url){
     }
 }
 ```
-Inoltre nel *JDialog* appaiono due pulsanti (*JButton*) i quali possono creare una nuova istanza MainFrame oppure aprire un file SnowFlake.
+Vi sono poi tre metodi che vanno ad aprire i link di **Instagram**, **GitHub** e del **sito del progetto** cliccando sui *JLabel* adibiti, utilizzando il metodo *browse()*.
 
-L'apertura di un file esterno è possibile tramite un *JFileChooser*, sul quale è stato applicato un filtro sul tipo di file `.snowflake`.
+Inoltre nel *JDialog* appaiono due pulsanti (*JButton*) i quali possono creare una nuova istanza *MainFrame* oppure aprire un file ```.snowflake```.
+
+L'apertura di un **file esterno** è possibile tramite un *JFileChooser*, sul quale è stato applicato un **filtro** sul tipo di file `.snowflake`.
 
 ```java
 private void OpenFlakeActionPerformed(java.awt.event.ActionEvent evt) {                                          
@@ -156,7 +172,7 @@ private void OpenFlakeActionPerformed(java.awt.event.ActionEvent evt) {
     } 
 }
 ```
-Il tasto "+" apre una nuova istanza *MainFrame*, permettendo all'utente di creare un fiocco di neve da zero.
+Il tasto "+" apre una nuova istanza *MainFrame*, permettendo all'utente di **creare** un fiocco di neve da zero.
 
 ```java
 private void NewFlakeActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -167,11 +183,19 @@ private void NewFlakeActionPerformed(java.awt.event.ActionEvent evt) {
 ```
 ###MainFrame
 ![](./img/MainFrame.png)
-La classe *MainFrame* contiene l'area di lavoro dove l'utente può eseguire tutte le operazioni grafiche e di salvataggio sul fiocco di neve. In questa classe sono contenuti *SnowFlakePanel* e *TrianglePanel*.
+La classe *MainFrame* contiene l'area di lavoro dove l'utente può eseguire tutte le **operazioni grafiche** e di salvataggio sul fiocco di neve. In questa classe sono contenuti *SnowFlakePanel* e *TrianglePanel*.
 
-La classe contiene inoltre un *JPanel*, chiamato *controlsPanel*, che contiene tutti i pulsanti visibili nella barra in alto e una *JToolBar*, chiamata *triangleToolBar*, che contiene il triangolo sul quale vengono svolte le operazioni di taglio.
-####triangleToolBar
-Nella toolbar *triangleToolBar* sono contenuti tutti gli *Swing controls* necessari all'utente per poter eseguire azioni sul fiocco di neve.
+La classe contiene inoltre un *JPanel*, chiamato *controlsPanel*, che contiene tutti i **tasti** visibili nella barra in alto e un *JPanel*, chiamata *controlPanel*, che contiene il triangolo sul quale vengono svolte le **operazioni di taglio**.
+
+####Costruttore
+Nel metodo costruttore vengono settati i **colori** di default, viene caricato il poligono di taglio serializzato nel caso si sia **caricato**, viene importato il triangolo da *TrianglePanel* e viene settato il titolo del *JFrame*.
+
+####triangleContainer
+Il pannello *triangleContainer* è adibito a contenere il *JPanel trianglePanel*.
+Il suo scopo è meramente estetico.
+
+####controlPanel
+Nella toolbar *controlPanel* sono contenuti tutti gli *Swing controls* necessari all'utente per poter eseguire azioni sul fiocco di neve.
 
 **Controlli:**
 
@@ -195,7 +219,6 @@ Nella toolbar *triangleToolBar* sono contenuti tutti gli *Swing controls* necess
 		``` 
 * Selettore di bordo del fiocco di neve [*JCheckBox*]
 	* Seleziona/deseleziona la visibilità del bordo del fiocco di neve.
-
 * Selettore di colore del bordo del fiocco di neve [*JPanel*]
 	* Seleziona il colore del bordo del fiocco di neve, tramite un *JColorChooser*, nel quale è possibile  scegliere un colore con un selettore RGB, HSV, HSL, CMYK e da una pagina "Swatches".
 	
@@ -224,16 +247,26 @@ Nella toolbar *triangleToolBar* sono contenuti tutti gli *Swing controls* necess
 * Slider per modificare il diametro dei punti cardine del poligono di taglio [*JSlider*]
 	* I punti cardine possono passare da un minimo di 5 px a 20 px di raggio.
 
-###TrianglePanel
 
 ###SnowFlakePanel
-La classe *SnowFlakePanel* contiene unicamente la versione generata del fiocco di neve.
-Questa classe genera un anteprima "live" del fiocco di neve, man mano che si aggiungono punti di taglio.
-Questo è permesso dal triangolo tagliato in *TrianglePanel*, passato con un attributo nella classe.
+La classe *SnowFlakePanel* contiene unicamente la versione **generata** del fiocco di neve.
+Questa classe genera un **anteprima "live"** del fiocco di neve, man mano che si aggiungono punti di taglio.
+Questo è permesso dal triangolo tagliato in *TrianglePanel*, passato con un **attributo** nella classe.
 
-I triangoli che compongono il fiocco di neve vengono posizionati e roteati tramite l'utilizzo della classe *AffineTransform*:
+####paintComponent
+In questo metodo vengono stampate tutte le **componenti** del fiocco di neve, ovvero le **12** versioni roteate del triangolo tagliato.
+
+In questo metodo vengono inoltre inizializzati i *renderingHints*, che permettono di utilizzare l'**antialiasing**.
+
+```java
+g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON));
+g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON );
+
+```
+
+I triangoli che compongono il fiocco di neve vengono **posizionati** e roteati tramite l'utilizzo della classe *AffineTransform*:
 ####flipArea
-Il metodo *flipArea* si occupa di specchiare il triangolo in modo da posizionarlo in modo adatto, in quanto ad occorrenza alterna serve una versione specchiata.
+Il metodo *flipArea* si occupa di **specchiare** il triangolo in modo da posizionarlo in modo adatto, in quanto ad occorrenza alterna serve una versione specchiata.
 
 ```java
 public Shape flipArea(Area origArea) {
@@ -249,7 +282,7 @@ public Shape flipArea(Area origArea) {
 ```
 
 ####rotateArea
-Il metodo *rotateArea* si occupa di roteare il triangolo, specificando l'ampiezza della rotazione in gradi. Questo triangolo viene roteato 6 volte di 60°, nel caso il triangolo venga specchiato non è necessario aggiungere ulteriore rotazione rispetto quello adiacente in quanto la specchiatura già provvede a ciò.
+Il metodo *rotateArea* si occupa di **roteare** il triangolo, specificando l'**ampiezza** della rotazione in gradi. Questo triangolo viene roteato 6 volte di 60°, nel caso il triangolo venga **specchiato** non è necessario aggiungere ulteriore rotazione rispetto a quello adiacente in quanto la specchiatura già provvede a ciò.
 
 ```java
 public Shape rotateArea(Shape origPoints, double angle) {
@@ -260,7 +293,7 @@ public Shape rotateArea(Shape origPoints, double angle) {
 ```
 
 ####translateToCenter
-Il metodo *translateToCenter* si occupa di traslare il triangolo al centro del pannello.
+Il metodo *translateToCenter* si occupa di **traslare** il triangolo al centro del pannello.
 
 ```java
 public Shape translateToCenter(Shape origShape){
@@ -275,10 +308,10 @@ public Shape translateToCenter(Shape origShape){
 }
 ```
 
-In questa classe sono presenti anche i metodi per il salvataggio del fiocco di neve come immagine, sia vettoriale che raster.
+In questa classe sono presenti anche i metodi per il **salvataggio** del fiocco di neve come immagine, sia **vettoriale** che **raster**.
 
 ####generateSVG
-Il metodo *generateSVG* si occupa di copiare l'output stampato sul pannello *SnowFlakePanel* su un file SVG, utilizzando la libreria *SVGGraphics2D*, offerta da *Apache*.
+Il metodo *generateSVG* si occupa di copiare l'output stampato sul pannello *SnowFlakePanel* su un file **SVG**, utilizzando la libreria *SVGGraphics2D*, offerta da *Apache*.
 
 ```java
 public void generateSVG(String filename){
@@ -306,7 +339,7 @@ public void generateSVG(String filename){
 ```
 
 ####generatePNG
-Il metodo *generatePNG* si occupa di copiare l'output stampato sul pannello *SnowFlakePanel* su un file PNG.
+Il metodo *generatePNG* si occupa di copiare l'output stampato sul pannello *SnowFlakePanel* su un file **PNG**.
 
 ```java
 public void generatePNG(String filename, int width){
@@ -344,8 +377,9 @@ public void generatePNG(String filename, int width){
     }
 }
 ```
+####TranslateToSide
 
-Per salvare il file PNG è inoltre necessario portare l'esagono del fiocco di neve al bordo del pannello con *AffineTransform*; ciò è stato fatto tramite il metodo *translateToSide*.
+Per salvare il file **PNG** è inoltre necessario portare l'esagono del fiocco di neve al **bordo** del pannello con *AffineTransform*; ciò è stato messo in pratica tramite il metodo *translateToSide*.
 
 ```java
 public Shape translateToSide(Shape origPoints){
@@ -361,16 +395,14 @@ public Shape translateToSide(Shape origPoints){
 ```
 
 ###TrianglePanel
-La classe *TrianglePanel* contiene unicamente il fiocco di neve "piegato", ovvero non generato (solo in triangolo). Questa classe si occupa anche di gestire l'aggiunta/rimozione dei punti di taglio.
-In questa classe sono presenti tutti i listener necessari per gestire tutti gli input del mouse, ovvero il click ed il trascinamento.
+La classe *TrianglePanel* contiene unicamente il fiocco di neve "piegato", ovvero **non generato** (solo in triangolo). Questa classe si occupa anche di gestire l'**aggiunta/rimozione** dei punti di taglio.
+In questa classe sono presenti tutti i **listener** necessari per gestire tutti gli **input del mouse**, ovvero il **click** ed il **trascinamento**.
 
-In questa classe sono presenti i seguenti attributi:
-- 
 
 ####MouseClicked
-Nel metodo *MouseClicked* viene gestito l'input di click del mouse. Vengono distinti due tipi di input: quello del tasto sinistro e quello del tasto destro.
-In caso di click con tasto sinistro viene aggiunto un punto al poligono di taglio.
-In caso di click con tasto destro destro viene rimosso il punto sul quale ci si trova.
+Nel metodo *MouseClicked* viene gestito l'input di **click** del mouse. Vengono distinti due tipi di input: quello del tasto **sinistro** e quello del tasto **destro**.
+In caso di click con tasto **sinistro** viene **aggiunto** un punto al poligono di taglio.
+In caso di click con tasto **destro** destro viene **rimosso** il punto sul quale ci si trova.
 ```java
 private void formMouseClicked(java.awt.event.MouseEvent evt) {                                  
     if (evt.getButton() == evt.BUTTON1) {
@@ -405,7 +437,7 @@ private void formMouseClicked(java.awt.event.MouseEvent evt) {
 ```
 
 ####MouseDragged
-Nel metodo *MouseDragged* viene gestito l'input di trascinamento del mouse. Quando ci si trova sopra un punto esistente (all'interno del punto cardine) la posizione del punto del poligono viene aggiornato.
+Nel metodo *MouseDragged* viene gestito l'input di **trascinamento** del mouse. Quando ci si trova sopra un **punto esistente** (all'interno del punto cardine) e si trascina con il mouse la posizione del punto del poligono viene **aggiornata**.
 
 ```java
 private void formMouseDragged(java.awt.event.MouseEvent evt) {                                  
@@ -439,7 +471,7 @@ private void formMouseDragged(java.awt.event.MouseEvent evt) {
 ```
 
 ####serialize/deSerialize
-I metodi *serialize* e *deSerialize* si occupano rispettivamente di salvare e caricare il poligono di taglio, usando la serializzazione degli oggetti.
+I metodi *serialize* e *deSerialize* si occupano rispettivamente di **salvare** e **caricare** il poligono di taglio, usando la **serializzazione** degli oggetti.
 
 ```java
     public void serialize(File handle) {
@@ -493,7 +525,7 @@ I metodi *serialize* e *deSerialize* si occupano rispettivamente di salvare e ca
     }
 ```
 ####firePropertyChanged
-In modo da aggiornare in modo sincronizzato il pannello contenente la generazione "live" ed il pannello del triangolo ad ogni azione su quest'ultimo è stato impiegato un metodo che lancia un'evento (verso *MainFrame*) ogni qualvolta ne che ne viene lanciato uno da *TrianglePanel*.
+In modo da aggiornare in modo **sincronizzato** il pannello contenente la generazione "live" ed il pannello del triangolo ad ogni azione su quest'ultimo è stato impiegato un metodo che **lancia un'evento** (verso *MainFrame*) ogni qualvolta ne viene lanciato uno da *TrianglePanel*.
 
 ```java
 public void firePropertyChange() {
@@ -507,40 +539,35 @@ public void firePropertyChange() {
 }
 ```
 ####paintComponent
-Nel metodo *paintComponent* vengono stampati tutti i componenti del pannello *TrianglePanel*, quali il triangolo tagliato, il poligono di taglio e la lista di punti, in modo da formare i punti cardine.
+Nel metodo *paintComponent* vengono stampati tutti i **componenti** del pannello *TrianglePanel*, quali il **triangolo** tagliato, il **poligono** di taglio e la **lista** di punti, in modo da formare i punti cardine.
 
 ###Triangle
-La classe triangolo si occupa di creare un modello di triangolo, usato sia da *TrianglePanel* che da *SnowFlakePanel*.
-In questo modo non ci sarà bisogno di calcolare in ogni pannello le dimensioni di tale triangolo.
+La classe triangolo si occupa di creare un **modello** di triangolo, usato sia da *TrianglePanel* che da *SnowFlakePanel*.
+In questo modo non ci sarà bisogno di calcolare in ogni **pannello** le dimensioni di tale triangolo.
 Questa classe calcola le dimensioni del triangolo in base alle dimensioni del pannello che lo andrà a contenere.
-Vengono passati tutti gli argomenti necessari, quali altezza e larghezza del pannello contenitore,la larghezza fissa e l'array di punti (x e y) utile a disegnare il poligono.
+Vengono passati tutti gli argomenti necessari, quali **altezza** e **larghezza** del pannello contenitore, la **larghezza** fissa e l'array di **punti** (x e y) utile a disegnare il poligono.
 
 ## Test
 
 ### Protocollo di test
 
-Definire in modo accurato tutti i test che devono essere realizzati per
-garantire l’adempimento delle richieste formulate nei requisiti. I test
-fungono da garanzia di qualità del prodotto. Ogni test deve essere
-ripetibile alle stesse condizioni.
-
 
 |Test Case| TC-001|
 |---------------|--------------------------------------|
-|**Nome**||
+|**Nome**|Sito web|
 |**Riferimento**| REQ-001 |
-|**Descrizione**||
-|**Prerequisiti**||
-|**Procedura**||
-|**Risultati attesi** ||
+|**Descrizione**|Deve essere presente un sito web adibito al download e presentazione del progetto|
+|**Prerequisiti**| - |
+|**Procedura**|Apro il browser e digito l'URL "http://samtinfo.ch/i17mazluc"|
+|**Risultati attesi**|Raggiungimento del sito web nel suo completo|
 
 |Test Case| TC-002|
 |---------------|--------------------------------------|
 |**Nome**|Inserimento punti|
 |**Riferimento**| REQ-002 |
 |**Descrizione**|L'utente deve poter inserire punti tramite il click sinistro del mouse sul triangolo|
-|**Prerequisiti**|Apertura del programma, creazione di un nuovo Fiocco|
-|**Procedura**|Clicco ripetutamente sul triangolo con il tasto sinistro|
+|**Prerequisiti**|Apertura del programma, creazione di un nuovo fiocco|
+|**Procedura**|Clicco ripetutamente sul triangolo con il tasto sinistro del mouse|
 |**Risultati attesi** |Creazione dei punti di taglio sopra al triangolo|
 
 |Test Case| TC-003|
@@ -549,8 +576,8 @@ ripetibile alle stesse condizioni.
 |**Riferimento**| - |
 |**Descrizione**|L'utente deve poter rimuovere i punti tramite il click destro del mouse sul triangolo|
 |**Prerequisiti**|Apertura programma, creazione di un nuovo fiocco, creazione di punti sul triangolo|
-|**Procedura**|Clicco ripetutamente sul triangolo con il tasto destro sui punti.|
-|**Risultati attesi** |Rimozione dei punti esistenti.|
+|**Procedura**|Clicco ripetutamente sul triangolo con il tasto destro del mouse sui punti|
+|**Risultati attesi** |Rimozione dei punti esistenti|
 
 |Test Case| TC-004|
 |---------------|--------------------------------------|
@@ -558,7 +585,7 @@ ripetibile alle stesse condizioni.
 |**Riferimento**| - |
 |**Descrizione**|L'utente deve poter spostare i punti tramite il trascinamento dei punti con tasto sinistro del mouse|
 |**Prerequisiti**|Apertura programma, creazione di un nuovo fiocco, creazione di punti sul triangolo|
-|**Procedura**|Trascino con il click sinistro ripetutamente i punti di taglio|
+|**Procedura**|Trascino con il click sinistro del mouse ripetutamente i punti di taglio|
 |**Risultati attesi** |Spostamento di tali punti|
 
 |Test Case| TC-005|
@@ -575,7 +602,7 @@ ripetibile alle stesse condizioni.
 |**Nome**|Live preview|
 |**Riferimento**| REQ-004 |
 |**Descrizione**|Il fiocco di neve si deve generare in modo sincrono con la creazione di punti sul triangolo|
-|**Prerequisiti**|Apertura del programma, creazione di un nuovo Fiocco|
+|**Prerequisiti**|Apertura del programma, creazione di un nuovo fiocco|
 |**Procedura**|Aggiungo, rimuovo e sposto ripetutamente i punti di taglio|
 |**Risultati attesi** |Sincronizzazione istantanea dei tagli sul fiocco di neve|
 
@@ -586,7 +613,7 @@ ripetibile alle stesse condizioni.
 |**Descrizione**|Il fiocco di neve si deve poter salvare in file di tipo SVG e PNG, quest'ultimo in dimensioni di 500x500 e 1000x1000|
 |**Prerequisiti**|Apertura programma, creazione di un nuovo fiocco, creazione di punti sul triangolo|
 |**Procedura**|Clicco sul tasto "Save as PNG" e "Save as SVG" e salvo in entrambe i formati|
-|**Risultati attesi** |In entrambi i casi deve apparire un *JFileChooser* che permette di scegliere il file in cui salvare e, nel caso del PNG di scegliere la sua dimensione; dovrebbero poi apparire i file.|
+|**Risultati attesi** |In entrambi i casi deve apparire un *JFileChooser* che permette di scegliere il file in cui salvare e, nel caso del PNG di scegliere la sua dimensione; devono poi apparire i file.|
 
 |Test Case| TC-008|
 |---------------|--------------------------------------|
@@ -605,7 +632,7 @@ ripetibile alle stesse condizioni.
 |**Descrizione**|La finestra deve avere una dimensione minima di 1024x768 e deve essere ridimensionabile|
 |**Prerequisiti**|Apertura programma, creazione di un nuovo fiocco|
 |**Procedura**|Trascino i bordi della finestra in modo da ridimensionarla|
-|**Risultati attesi** |La finestra non ha mai grandezza inferiore a 1024x768|
+|**Risultati attesi** |La finestra non ha mai grandezza inferiore a 1024x768 e si ridimensiona|
 
 |Test Case| TC-010|
 |---------------|--------------------------------------|
@@ -623,50 +650,54 @@ ripetibile alle stesse condizioni.
 |**Descrizione**|Dev'essere presente una finestra iniziale la quale ha le opzioni di creare un nuovo fiocco oppure caricarne uno esistente|
 |**Prerequisiti**|Apertura programma|
 |**Procedura**|Apro il programma|
-|**Risultati attesi** |Devono apparire due tasti, uno per aprire un nuovo fiocco, uno per caricarne uno esistente|
+|**Risultati attesi** |Devono essere presenti due tasti, uno per aprire un nuovo fiocco, uno per caricarne uno esistente|
 
-|Test Case| TC-011|
+|Test Case| TC-012|
 |---------------|--------------------------------------|
-|**Nome**|Finestra iniziale|
-|**Riferimento**| REQ-010 |
-|**Descrizione**|Dev'essere presente una finestra iniziale la quale ha le opzioni di creare un nuovo fiocco oppure caricarne uno esistente|
-|**Prerequisiti**|Apertura programma|
-|**Procedura**|Apro il programma|
-|**Risultati attesi** |Devono apparire due tasti, uno per aprire un nuovo fiocco, uno per caricarne uno esistente|
+|**Nome**|Selezione colore|
+|**Riferimento**| -|
+|**Descrizione**|Devono essere presenti due selettori di colori per lo riempimento e per il bordo.|
+|**Prerequisiti**|Apertura programma, creazione di un nuovo fiocco|
+|**Procedura**|Clicco sui selettori di colore seleziono il colore tramite il *JFileChooser*|
+|**Risultati attesi**|Devono cambiare i colori del selettore e dello sfondo del fiocco e del triangolo, rispettivamente per bordo e riempimento|
+
+|Test Case| TC-013|
+|---------------|--------------------------------------|
+|**Nome**|Selezione visibilità colore|
+|**Riferimento**| - |
+|**Descrizione**|Devono essere presenti due selettori di visibilità di colori per lo riempimento e per il bordo.|
+|**Prerequisiti**|Apertura programma, creazione di un nuovo fiocco|
+|**Procedura**|Clicco sui selettori di colore seleziono il colore tramite il *JFileChooser*|
+|**Risultati attesi**|Devono cambiare i colori del selettore e dello sfondo del fiocco e del triangolo, rispettivamente per bordo e riempimento, diventando trasparenti|
 
 ### Risultati test
 
-Tutti i test sono stati adempiti correttamente e hanno dato risultato positivo, fatta eccezione per quello del salvataggio del PNG. Infatti il file PNG non può esere salvato in molteplici dimensioni, quali 500x500 e 1000x1000, ma solo in 600x600.
+Tutti i test sono stati adempiti correttamente e hanno dato risultato **positivo**, fatta eccezione per quello del salvataggio del **PNG**. Infatti il file **PNG** non può essere salvato in dimensioni diverse, quali 500x500 e 1000x1000, ma solo in 600x600.
 
 ### Mancanze/limitazioni conosciute
 
-Descrizione con motivazione di eventuali elementi mancanti o non
-completamente implementati, al di fuori dei test case. Non devono essere
-riportati gli errori e i problemi riscontrati e poi risolti durante il
-progetto.
+L'unico **requisito** che non è stato implementato è quello della risoluzione dell'immagine **PNG**.
+Questo requisito non è stato rispettato in quanto la **soluzione** mi era ignota.
 
 ## Consuntivo
 ![](./img/GanttConsuntivo.png)
 
 ## Conclusioni
 
-Quali sono le implicazioni della mia soluzione? Che impatto avrà?
-Cambierà il mondo? È un successo importante? È solo un’aggiunta
-marginale o è semplicemente servita per scoprire che questo percorso è
-stato una perdita di tempo? I risultati ottenuti sono generali,
-facilmente generalizzabili o sono specifici di un caso particolare? ecc
+L'applicazione di sicuro non cambierà il mondo e può essere sviluppato in modo molto più completo e professionale.
+Quello che è certo è che questo progetto ha cambiato il mio modo di **programmare**, gestire il **tempo**, **organizzarmi** e ho acquisito nuove **capacità**.
+
+Il progetto ha un'esito positivo a mio avviso, tutto ciò che ritenevo necessario per il software è stato fatto e ho anche avuto il tempo di svilupparne un design professionale. 
 
 ### Sviluppi futuri
-Ne progetto possono essere aggiunte sono molteplici, come per esempio la possibilità di aggiungere molteplici poligoni, la  possibilità di salvare il file PNG in diverse risoluzioni, e molte altre.
-Essendo un prodotto basato sulla creatività le possibili funzionalità sono moltissime.
+Nel progetto le funzionalità che possono essere aggiunte sono **molteplici**, come per esempio la possibilità di aggiungere più **poligoni**, quella di salvare il file **PNG** in diverse risoluzioni, e molte altre.
+Essendo un prodotto basato sulla creatività le possibili funzionalità sono svariate.
 
 ### Considerazioni personali
-Da questo progetto ho imparato gestire un mandato, il quale potrebbe venire da un superiore oppure da un cliente, ho imparato a gestire in modo più efficiente il tempo a disposizione e a capire come dividerlo tra le vari requisiti richiesti.
-Ho inoltre imparato ad utilizzare una piattaforma Git.
-## Bibliografia
+Da questo progetto ho imparato a **gestire** un **mandato**, il quale potrebbe essere assegnato da un **superiore** oppure da un **cliente**, ho imparato a gestire in modo più efficiente il **tempo** a disposizione e a capire come dividerlo tra i vari **requisiti**.
+Ho inoltre appreso ad utilizzare una piattaforma **Git**.
 
-
-### Sitografia
+## Sitografia
 
 -   https://xmlgraphics.apache.org/batik/using/svg-generator.html, *Apache Batik SVGGraphics2D*, 30-11-2019.
 
