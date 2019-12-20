@@ -18,5 +18,6 @@ Progetto del primo semestre del terzo anno della Scuola Arti e Mestieri di Treva
 	* [29/11/2019](./documenti/diari/MAZLUC_Diario_2019-11-29.md)
 	* [06/12/2019](./documenti/diari/MAZLUC_Diario_2019-12-06.md)
 	* [13/12/2019](./documenti/diari/MAZLUC_Diario_2019-12-13.md)
-* [JavaDoc](./src/javadoc/index.html)
+* [Sito web](http://samtinfo.ch/i17mazluc)
+* [JavaDoc](http://samtinfo.ch/i17mazluc/JavaDoc)
 
